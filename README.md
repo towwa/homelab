@@ -1,5 +1,10 @@
 ## homelab
 
+To start the stack install docker and docker-compose and run
+```
+docker compose up -d
+```
+
 My personal homelab for learning. My stack runs on a proxmox Ubuntu 22.04 VM. So far I have and planned
 - proxmox 
 - *arr stack with jellyfin
