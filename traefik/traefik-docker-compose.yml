@@ -1,33 +1,46 @@
 services:
   traefik:
-    image: traefik:v3.4
+    image: traefik:v3.5
     container_name: traefik
-    command:
-      - "--api.insecure=true"
-      - "--providers.docker=true"
-      - "--entrypoints.web.address=:80"
+    restart: on-failure
     ports:
-      - "80:80"
-      - "443:443"
-      - "8081:8080"
+      - 80:80/tcp # http
+      - 443:443/tcp # https
+      - 443:443/udp # https http3 quic
+      - 8081:8080 # http api dashboard
+      - "25565:25565" # Minecraft server
+    expose:
+      - 80 # http
+      - 443 # https
+      - 8081 # http api dashboard
+    environment:
+      - CF_API_EMAIL=${CF_API_EMAIL}
+      - CF_DNS_API_TOKEN=${CF_DNS_API_TOKEN}
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - ./traefik.yml:/traefik.yml
-      - ./acme.json:/acme.json
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./config/acme.json:/acme.json
+      - ./config:/etc/traefik/
     labels:
       - "traefik.enable=true"
+      - "traefik.http.routers.traefik.rule=Host(`traefik.${MY_DOMAIN}`)"
+      - "traefik.http.routers.traefik.tls=true"
       - "traefik.http.routers.traefik.tls.certresolver=lets-encr"
       - "traefik.http.routers.traefik.tls.domains[0].main=*.$MY_DOMAIN"
       - "traefik.http.routers.traefik.tls.domains[0].sans=$MY_DOMAIN"
-    restart: unless-stopped
+      - "traefik.http.routers.traefik.entrypoints=websecure"
+      - "traefik.http.routers.traefik.middlewares=local-ipwhitelist@file,basic-auth@file"
+      - "traefik.http.routers.traefik.service=api@internal"
 
   whoami:
     image: traefik/whoami
+    container_name: whoami
+    restart: unless-stopped
     labels:
+      - "traefik.enable=true"
       - "traefik.http.routers.whoami.entrypoints=websecure"
       - "traefik.http.routers.whoami.rule=Host(`whoami.${MY_DOMAIN}`)"
       - "traefik.http.routers.whoami.tls.certresolver=lets-encr"
-      - "traefik.http.routers.whoami.tls.domains[0].main=whoami.${MY_DOMAIN}"
+      - "traefik.http.routers.whoami.middlewares=local-ipwhitelist@file,basic-auth@file"
 
 networks:
   default:
