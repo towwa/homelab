@@ -1,6 +1,20 @@
 ## homelab
 
-To start the stack install docker and docker-compose and run
+
+To start the stack, first setup .env file and copy it into `traefik` and then install docker and docker-compose and run
+
+.env file example:
+```
+MEDIA_PATH=/mnt/media
+DOCKER_VOLUME_STORAGE=/mnt/media
+OPENVPN_USER=abcd
+OPENVPN_PASSWORD=abcd
+MY_DOMAIN=yourdomain.com
+DEFAULT_NETWORK=traefik_net
+CF_API_EMAIL=email@gmail.com
+CF_DNS_API_TOKEN=LG-abcd
+```
+
 ```
 docker compose up -d
 ```
