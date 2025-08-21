@@ -5,7 +5,6 @@
         ":pinVersions",
         ":semanticCommits",
         ":rebaseStalePrs",
-        ":prConcurrentLimit5",
         ":prHourlyLimit2"
     ],
     "enabledManagers": [
