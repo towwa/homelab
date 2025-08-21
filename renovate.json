@@ -3,50 +3,33 @@
     "extends": [
         "config:recommended",
         ":pinVersions",
-        ":pinDigests",
+        "docker:pinDigests",
         ":semanticCommits",
         ":rebaseStalePrs",
-        ":prHourlyLimit2"
+        ":disableRateLimiting"
     ],
     "enabledManagers": [
         "dockerfile",
         "docker-compose"
     ],
+    "ignoreTests": true,
     "packageRules": [
         {
-            "matchManagers": [
-                "dockerfile",
-                "docker-compose"
-            ],
+            "groupName": "all non-major dependencies",
+            "groupSlug": "all-minor-patch-digest",
             "matchUpdateTypes": [
-                "digest",
-                "patch"
+                "minor",
+                "patch",
+                "digest"
             ],
+            "minimumReleaseAge": "1 day",
             "automerge": true,
-            "automergeType": "pr"
-        },
-        {
-            "matchManagers": [
-                "dockerfile",
-                "docker-compose"
+            "automergeType": "branch",
+            "automergeSchedule": [
+                "* 0-3 * * *"
             ],
-            "matchUpdateTypes": [
-                "pin",
-                "minor"
-            ],
-            "automerge": false
-        },
-        {
-            "matchManagers": [
-                "dockerfile",
-                "docker-compose"
-            ],
-            "matchUpdateTypes": [
-                "major"
-            ],
-            "automerge": false,
-            "labels": [
-                "breaking-change"
+            "matchPackageNames": [
+                "*"
             ]
         }
     ]
