@@ -3,6 +3,7 @@
     "extends": [
         "config:recommended",
         ":pinVersions",
+        ":pinDigests",
         ":semanticCommits",
         ":rebaseStalePrs",
         ":prHourlyLimit2"
@@ -30,6 +31,7 @@
                 "docker-compose"
             ],
             "matchUpdateTypes": [
+                "pin",
                 "minor"
             ],
             "automerge": false
