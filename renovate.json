@@ -1,17 +1,68 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended"
-  ]
-
-  "extends": ["config:recommended", ":pinDigests"],
-  "enabledManagers": ["dockerfile", "docker-compose"],
-  "packageRules": [
-    {
-      "managers": ["dockerfile", "docker-compose"],
-      "automerge": false,
-      "automergeType": "pr",
-      "matchUpdateTypes": ["digest", "patch"]
-    }
-  ]
+    "extends": [
+        "config:recommended"
+    ],
+    "rangeStrategy": "pin",
+    "enabledManagers": [
+        "docker-compose",
+        "regex"
+    ],
+    "labels": [
+        "deps",
+        "docker"
+    ],
+    "dependencyDashboard": true,
+    "packageRules": [
+        {
+            "description": "Automerge safe updates (patch/minor) for Docker images",
+            "matchDatasources": [
+                "docker"
+            ],
+            "matchUpdateTypes": [
+                "patch",
+                "minor"
+            ],
+            "automerge": true,
+            "automergeType": "branch",
+            "prPriority": 0
+        },
+        {
+            "description": "Require manual review for MAJOR docker image upgrades",
+            "matchDatasources": [
+                "docker"
+            ],
+            "matchUpdateTypes": [
+                "major"
+            ],
+            "automerge": false,
+            "prPriority": 10,
+            "labels": [
+                "major",
+                "needs-review"
+            ]
+        },
+        {
+            "description": "Group all compose updates into a single PR",
+            "matchManagers": [
+                "docker-compose"
+            ],
+            "groupName": "docker-compose updates",
+            "additionalBranchPrefix": "compose-"
+        },
+        {
+            "description": "Keep within current major for critical services",
+            "matchDatasources": [
+                "docker"
+            ],
+            "matchPackagePatterns": [
+                "^traefik$",
+                "portainer/portainer-ee",
+            ],
+            "allowedVersions": "<${{currentMajor+1}}.0.0"
+        }
+    ],
+    "semanticCommits": "enabled",
+    "prCreation": "immediate",
+    "commitBodyTable": true,
+    "rebaseWhen": "behind-base-branch"
 }
