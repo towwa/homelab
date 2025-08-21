@@ -1,6 +1,6 @@
 services:
   sonarr:
-    image: lscr.io/linuxserver/sonarr:latest
+    image: lscr.io/linuxserver/sonarr:latest@sha256:1a90192952c30f9420994b2e2171083ea8cae100357de5e9eb25890efa90a6ce
     container_name: sonarr
     network_mode: "service:gluetun"
     environment:
@@ -14,7 +14,7 @@ services:
     restart: unless-stopped
 
   radarr:
-    image: lscr.io/linuxserver/radarr:latest
+    image: lscr.io/linuxserver/radarr:latest@sha256:c2adf66bafefa781401d07d358e399c476bdffb9a179a2780bb465bda8a55a51
     container_name: radarr
     network_mode: "service:gluetun"
     environment:
@@ -28,7 +28,7 @@ services:
     restart: unless-stopped
 
   prowlarr:
-    image: lscr.io/linuxserver/prowlarr:latest
+    image: lscr.io/linuxserver/prowlarr:latest@sha256:25d21c04c7cc39a706217abb77bb60b283d9eaaf16acf539c930e3c797e21f25
     container_name: prowlarr
     network_mode: "service:gluetun"
     environment:
@@ -40,7 +40,7 @@ services:
     restart: unless-stopped
 
   bazarr:
-    image: lscr.io/linuxserver/bazarr:latest
+    image: lscr.io/linuxserver/bazarr:latest@sha256:d37a88fb1751c7b9a9fc4d134b8e96c1e32821ee38630770e6a9112cf47fbe55
     container_name: bazarr
     network_mode: "service:gluetun"
     environment:
@@ -54,7 +54,7 @@ services:
     restart: unless-stopped
 
   qbittorrent:
-    image: lscr.io/linuxserver/qbittorrent:latest
+    image: lscr.io/linuxserver/qbittorrent:latest@sha256:e18ca174d53f4b065884aa36564598395142fb450968f3ef95aaa5eaaa90cb42
     container_name: qbittorrent
     network_mode: "service:gluetun"
     environment:
@@ -69,7 +69,7 @@ services:
     restart: unless-stopped
 
   jellyfin:
-    image: lscr.io/linuxserver/jellyfin:latest
+    image: lscr.io/linuxserver/jellyfin:latest@sha256:615b294ebdc3508e1529ff20f6ff2ba882c9a1abfee6dcedd2ed9e6f2243521c
     container_name: jellyfin
     environment:
       - PUID=1000
@@ -88,7 +88,7 @@ services:
     restart: unless-stopped
 
   jellyseerr:
-    image: fallenbagel/jellyseerr:latest
+    image: fallenbagel/jellyseerr:latest@sha256:4538137bc5af902dece165f2bf73776d9cf4eafb6dd714670724af8f3eb77764
     container_name: jellyseerr
     environment:
       - LOG_LEVEL=debug
@@ -101,7 +101,7 @@ services:
     restart: unless-stopped
   
   profilarr:
-    image: santiagosayshey/profilarr:latest # or :beta
+    image: santiagosayshey/profilarr:latest@sha256:da7883be74c1b69ac1735ce4238b1a77e12117e94c64355704bf27bac0aa34de # or :beta
     container_name: profilarr
     ports:
       - 6868:6868
@@ -114,7 +114,7 @@ services:
     restart: unless-stopped
 
   gluetun:
-    image: qmcgaw/gluetun:latest
+    image: qmcgaw/gluetun:latest@sha256:29be3ff9a71ecc5ddb6716b5a4859b1af5712a6debe90ca69b100ef784845bbc
     container_name: gluetun
     ports:
       - 8989:8989 #sonarr
@@ -138,7 +138,7 @@ services:
     restart: unless-stopped
     
   portainer:
-    image: portainer/portainer-ee:latest
+    image: portainer/portainer-ee:latest@sha256:7a8270d99157f8e03acf114dc237fae7ed8682ac9092cb792ba1c3407ae1a168
     container_name: portainer
     ports:
       - 9443:9443
@@ -159,7 +159,7 @@ services:
     # build:
     #   context: .
     #   dockerfile: Dockerfile
-    image: ghcr.io/dispatcharr/dispatcharr:latest
+    image: ghcr.io/dispatcharr/dispatcharr:latest@sha256:309d81f0a66ef97e91f288df8081cb5a0a80866f2019eec7d4d49fd1dae97bd9
     container_name: dispatcharr
     ports:
       - 9191:9191

@@ -1,6 +1,6 @@
 services:
   traefik:
-    image: traefik:v3.5
+    image: traefik:v3.5@sha256:4e7175cfe19be83c6b928cae49dde2f2788fb307189a4dc9550b67acf30c11a5
     container_name: traefik
     restart: on-failure
     ports:
@@ -32,7 +32,7 @@ services:
       - "traefik.http.routers.traefik.service=api@internal"
 
   whoami:
-    image: traefik/whoami
+    image: traefik/whoami@sha256:200689790a0a0ea48ca45992e0450bc26ccab5307375b41c84dfc4f2475937ab
     container_name: whoami
     restart: unless-stopped
     labels:
