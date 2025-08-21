@@ -1,68 +1,52 @@
 {
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
     "extends": [
-        "config:recommended"
+        "config:recommended",
+        ":pinDigests",
+        ":semanticCommits",
+        ":rebaseStalePrs",
+        ":prConcurrentLimit5",
+        ":prHourlyLimit2"
     ],
-    "rangeStrategy": "pin",
     "enabledManagers": [
-        "docker-compose",
-        "regex"
+        "dockerfile",
+        "docker-compose"
     ],
-    "labels": [
-        "deps",
-        "docker"
-    ],
-    "dependencyDashboard": true,
     "packageRules": [
         {
-            "description": "Automerge safe updates (patch/minor) for Docker images",
-            "matchDatasources": [
-                "docker"
+            "matchManagers": [
+                "dockerfile",
+                "docker-compose"
             ],
             "matchUpdateTypes": [
-                "patch",
-                "minor"
+                "digest",
+                "patch"
             ],
             "automerge": true,
-            "automergeType": "branch",
-            "prPriority": 0
+            "automergeType": "pr"
         },
         {
-            "description": "Require manual review for MAJOR docker image upgrades",
-            "matchDatasources": [
-                "docker"
+            "matchManagers": [
+                "dockerfile",
+                "docker-compose"
+            ],
+            "matchUpdateTypes": [
+                "minor"
+            ],
+            "automerge": false
+        },
+        {
+            "matchManagers": [
+                "dockerfile",
+                "docker-compose"
             ],
             "matchUpdateTypes": [
                 "major"
             ],
             "automerge": false,
-            "prPriority": 10,
             "labels": [
-                "major",
-                "needs-review"
+                "breaking-change"
             ]
-        },
-        {
-            "description": "Group all compose updates into a single PR",
-            "matchManagers": [
-                "docker-compose"
-            ],
-            "groupName": "docker-compose updates",
-            "additionalBranchPrefix": "compose-"
-        },
-        {
-            "description": "Keep within current major for critical services",
-            "matchDatasources": [
-                "docker"
-            ],
-            "matchPackagePatterns": [
-                "^traefik$",
-                "portainer/portainer-ee",
-            ],
-            "allowedVersions": "<${{currentMajor+1}}.0.0"
         }
-    ],
-    "semanticCommits": "enabled",
-    "prCreation": "immediate",
-    "commitBodyTable": true,
-    "rebaseWhen": "behind-base-branch"
+    ]
 }
