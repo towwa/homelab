@@ -54,7 +54,7 @@ services:
     restart: unless-stopped
 
   qbittorrent:
-    image: lscr.io/linuxserver/qbittorrent:latest@sha256:c6dd175c7bb8371ce62b6fd7abbeb082593a42df3b01716a4e6bb53a734bf6f2
+    image: lscr.io/linuxserver/qbittorrent:latest@sha256:4d651284a42e8ae33f23d41a0ccfdfff8ab8ebee28099fd030d9e858dbbbdf38
     container_name: qbittorrent
     network_mode: "service:gluetun"
     environment:
@@ -114,7 +114,7 @@ services:
     restart: unless-stopped
 
   gluetun:
-    image: qmcgaw/gluetun:latest@sha256:29be3ff9a71ecc5ddb6716b5a4859b1af5712a6debe90ca69b100ef784845bbc
+    image: qmcgaw/gluetun:latest@sha256:156ed7abe05c2e8cbe505e699909e2fe1779c71d977df5936484b692c61d3717
     container_name: gluetun
     ports:
       - 8989:8989 #sonarr
@@ -159,7 +159,7 @@ services:
     # build:
     #   context: .
     #   dockerfile: Dockerfile
-    image: ghcr.io/dispatcharr/dispatcharr:latest@sha256:309d81f0a66ef97e91f288df8081cb5a0a80866f2019eec7d4d49fd1dae97bd9
+    image: ghcr.io/dispatcharr/dispatcharr:latest@sha256:ee41e42109e27244929ccd3001a5b4e5761731363002745aeb3aa7f24658f696
     container_name: dispatcharr
     ports:
       - 9191:9191
