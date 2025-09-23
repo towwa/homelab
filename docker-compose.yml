@@ -40,7 +40,7 @@ services:
     restart: unless-stopped
 
   bazarr:
-    image: lscr.io/linuxserver/bazarr:latest@sha256:59f4d72d433a837f4bb22c8cbb58e26ec63716da2ec4c23d2dd8fef55a804a85
+    image: lscr.io/linuxserver/bazarr:latest@sha256:e424330f048ff1401f22413e34ee11c25ac2de79b6213c6ead3f593b44626c55
     container_name: bazarr
     network_mode: "service:gluetun"
     environment:
@@ -69,7 +69,7 @@ services:
     restart: unless-stopped
 
   jellyfin:
-    image: lscr.io/linuxserver/jellyfin:latest@sha256:9bc128a2a6f58f65da0dabc77d56e4a3f8c25ec6f491bb7d43efe95236321a6b
+    image: lscr.io/linuxserver/jellyfin:latest@sha256:2e4a4c271afa1488b8c2a7ee7aaf301e82cd0ce0855be023095ad143ed52be75
     container_name: jellyfin
     environment:
       - PUID=1000
