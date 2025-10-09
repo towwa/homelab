@@ -28,7 +28,7 @@ services:
     restart: unless-stopped
 
   prowlarr:
-    image: lscr.io/linuxserver/prowlarr:latest@sha256:fa81e471a7e46a24b121838563a10d468cf82eecd1587a464c6df4927ecc3248
+    image: lscr.io/linuxserver/prowlarr:latest@sha256:964485823771c102427a0c1cd896cf6b576add6f21bd041498b92cb040ee7270
     container_name: prowlarr
     network_mode: "service:gluetun"
     environment:
@@ -40,7 +40,7 @@ services:
     restart: unless-stopped
 
   bazarr:
-    image: lscr.io/linuxserver/bazarr:latest@sha256:cf7a02a46d37899eeafd1d96b81984168f771f89c554a52a2fd35437fdc16cb6
+    image: lscr.io/linuxserver/bazarr:latest@sha256:005f97fcab0fd7402cd7ff3c09f5ff4da4c63ca51be487e90d5c4dc8a8f85a45
     container_name: bazarr
     network_mode: "service:gluetun"
     environment:
@@ -54,7 +54,7 @@ services:
     restart: unless-stopped
 
   qbittorrent:
-    image: lscr.io/linuxserver/qbittorrent:latest@sha256:f83e2741b0b1b74901c97e36caa4aa3e0f2817c616426608eabf5aeef7f4a40a
+    image: lscr.io/linuxserver/qbittorrent:latest@sha256:032801369ba08f6a40e852f5334671c413c38036847927e1cf14b66784f74adb
     container_name: qbittorrent
     network_mode: "service:gluetun"
     environment:
@@ -69,7 +69,7 @@ services:
     restart: unless-stopped
 
   jellyfin:
-    image: lscr.io/linuxserver/jellyfin:latest@sha256:648f92792d822526a99a477361f2f127b31fa1da0aea301a9174e8b95f9ad8dc
+    image: lscr.io/linuxserver/jellyfin:latest@sha256:68e012f4bf5aeb114632e9045f5b2f2f6713536693093f70fcb338179f84f86c
     container_name: jellyfin
     environment:
       - PUID=1000
@@ -159,7 +159,7 @@ services:
     # build:
     #   context: .
     #   dockerfile: Dockerfile
-    image: ghcr.io/dispatcharr/dispatcharr:latest@sha256:faced8c8586aa1076ec80d53b1a92212ea390ad5c866aa438efed65b50718b60
+    image: ghcr.io/dispatcharr/dispatcharr:latest@sha256:31242b53f369e82e92d8f5ef53f93d5686c2a8c7fbb486a1fc57d006def13401
     container_name: dispatcharr
     ports:
       - 9191:9191
