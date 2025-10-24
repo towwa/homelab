@@ -28,7 +28,7 @@ services:
     restart: unless-stopped
 
   prowlarr:
-    image: lscr.io/linuxserver/prowlarr:latest@sha256:366914352b21e79733f1bad1c3840ca679a55dc4875754eec06ccbcc49b649d1
+    image: lscr.io/linuxserver/prowlarr:latest@sha256:608935c38763920b25622a3d404bb14ea08fcaa7c2a9b1c93ce9bac61ad4b11d
     container_name: prowlarr
     network_mode: "service:gluetun"
     environment:
@@ -40,7 +40,7 @@ services:
     restart: unless-stopped
 
   bazarr:
-    image: lscr.io/linuxserver/bazarr:latest@sha256:750251d7dcf245d05ad6b2b0c39685282df43a8582875fa31ab2a9328af64e26
+    image: lscr.io/linuxserver/bazarr:latest@sha256:a93c3595410f5c5791a126d7705cd8a29f3ce882338eef304cb8bece3ef2580b
     container_name: bazarr
     network_mode: "service:gluetun"
     environment:
@@ -69,7 +69,7 @@ services:
     restart: unless-stopped
 
   jellyfin:
-    image: lscr.io/linuxserver/jellyfin:latest@sha256:68e012f4bf5aeb114632e9045f5b2f2f6713536693093f70fcb338179f84f86c
+    image: lscr.io/linuxserver/jellyfin:latest@sha256:0ffe47d268e9cb2665f52e56fd7756ed984b0f3e7eddaf3882ebdb677af1b341
     container_name: jellyfin
     environment:
       - PUID=1000
@@ -114,7 +114,7 @@ services:
     restart: unless-stopped
 
   gluetun:
-    image: qmcgaw/gluetun:latest@sha256:e63f6c28db9278b7dfa3f2277e9ed0ca776c1d3064983ff411916ee3fa857adc
+    image: qmcgaw/gluetun:latest@sha256:791a15decc982d4968d10159227cca26e12083b7e51b00b2c3d0e35163203a69
     container_name: gluetun
     ports:
       - 8989:8989 #sonarr
@@ -159,7 +159,7 @@ services:
     # build:
     #   context: .
     #   dockerfile: Dockerfile
-    image: ghcr.io/dispatcharr/dispatcharr:latest@sha256:31242b53f369e82e92d8f5ef53f93d5686c2a8c7fbb486a1fc57d006def13401
+    image: ghcr.io/dispatcharr/dispatcharr:latest@sha256:894aa15b61a45d3238a66dc06411e684ced0d687453a5be21d10a81b12e476a3
     container_name: dispatcharr
     ports:
       - 9191:9191
