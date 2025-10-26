@@ -14,7 +14,7 @@ services:
     restart: unless-stopped
 
   radarr:
-    image: lscr.io/linuxserver/radarr:latest@sha256:fae2aafa6ecace3524fc79d102f5bfd25fb151caed6a454cee46479236ac33bf
+    image: lscr.io/linuxserver/radarr:latest@sha256:c984533510abe0219a70e80d15bd0d212b7df21baa0913759c4ce6cc9092240b
     container_name: radarr
     network_mode: "service:gluetun"
     environment:
@@ -28,7 +28,7 @@ services:
     restart: unless-stopped
 
   prowlarr:
-    image: lscr.io/linuxserver/prowlarr:latest@sha256:608935c38763920b25622a3d404bb14ea08fcaa7c2a9b1c93ce9bac61ad4b11d
+    image: lscr.io/linuxserver/prowlarr:latest@sha256:643220338204525524db787ff38a607261597f49d1f550694acdb3e908e2b43e
     container_name: prowlarr
     network_mode: "service:gluetun"
     environment:
@@ -54,7 +54,7 @@ services:
     restart: unless-stopped
 
   qbittorrent:
-    image: lscr.io/linuxserver/qbittorrent:latest@sha256:51dd497bd9b1de06fc1f9c9753297fae1e7445ad817e4528ee3f84c9c3122c7d
+    image: lscr.io/linuxserver/qbittorrent:latest@sha256:098d4340c0709a9ddbc7010ca21900238388454e20182d52b9723b40a2a44293
     container_name: qbittorrent
     network_mode: "service:gluetun"
     environment:
