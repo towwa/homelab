@@ -69,7 +69,7 @@ services:
     restart: unless-stopped
 
   jellyfin:
-    image: lscr.io/linuxserver/jellyfin:latest@sha256:a21a912c708cfd3352ec25f00155cb52d486bfd3d1b440e59a042373b3a271e6
+    image: lscr.io/linuxserver/jellyfin:latest@sha256:d351d241011e26be29ac06127644c194b5e0d204edb852727afa4df0ee791fb5
     container_name: jellyfin
     environment:
       - PUID=1000
@@ -114,7 +114,7 @@ services:
     restart: unless-stopped
 
   gluetun:
-    image: qmcgaw/gluetun:latest@sha256:a911b2e5b00995f7b50c8feb9bc3a12ebc7946b7ec7dfd374b44f3ceda9e1d85
+    image: qmcgaw/gluetun:latest@sha256:27d04939a15a83b3ec5ff19598b9bfb8b385b1866237b32c3dded6d53f8430f1
     container_name: gluetun
     ports:
       - 8989:8989 #sonarr
