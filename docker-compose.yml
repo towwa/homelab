@@ -28,7 +28,7 @@ services:
     restart: unless-stopped
 
   prowlarr:
-    image: lscr.io/linuxserver/prowlarr:latest@sha256:484784daaf4c081e55c608de256870184d283762e1b64e8105af487b1510fc4a
+    image: lscr.io/linuxserver/prowlarr:latest@sha256:3dd3a316f60ea4e6714863286549a6ccaf0b8cf4efe5578ce3fe0e85475cb1cf
     container_name: prowlarr
     network_mode: "service:gluetun"
     environment:
@@ -114,7 +114,7 @@ services:
     restart: unless-stopped
 
   gluetun:
-    image: qmcgaw/gluetun:latest@sha256:64689ce1eeca404087d88d0aa0c920c69d9d484a18866e272ebc37492f0354ce
+    image: qmcgaw/gluetun:latest@sha256:7beb357f2b9e0e181812b6f408812e00ef85334bf2dd1b9b6d2df6c5b0bf8957
     container_name: gluetun
     ports:
       - 8989:8989 #sonarr
@@ -138,7 +138,7 @@ services:
     restart: unless-stopped
     
   portainer:
-    image: portainer/portainer-ee:latest@sha256:7f751da21b193c820bcfecf971a7e12cb4ed0ae7af124627cfeabcfeae2619d0
+    image: portainer/portainer-ee:latest@sha256:be7190735ec9427399053c7bda0a922a981d54c1e76f0f3841ab3b80a380ecc5
     container_name: portainer
     ports:
       - 9443:9443
@@ -159,7 +159,7 @@ services:
     # build:
     #   context: .
     #   dockerfile: Dockerfile
-    image: ghcr.io/dispatcharr/dispatcharr:latest@sha256:e4d4a678ac2a788b8be1d2bfb6b40d43d7262468e61e084cd7166714aecbc6bb
+    image: ghcr.io/dispatcharr/dispatcharr:latest@sha256:510829d3d4dba6b690e6afeb9b31da6549e3dc23950e71d2bc877608acf7cb7d
     container_name: dispatcharr
     ports:
       - 9191:9191
