@@ -1,6 +1,6 @@
 services:
   sonarr:
-    image: lscr.io/linuxserver/sonarr:latest@sha256:4b8a853b76337cd5de5f69961e23b7d0792ce7bf0a8be083dd7202ef670bfc34
+    image: lscr.io/linuxserver/sonarr:latest@sha256:2fc9c36769a3f50ab529e7ccc37687d118ab42199b01588573f03b3393cc3223
     container_name: sonarr
     network_mode: "service:gluetun"
     environment:
@@ -114,7 +114,7 @@ services:
     restart: unless-stopped
 
   gluetun:
-    image: qmcgaw/gluetun:latest@sha256:7beb357f2b9e0e181812b6f408812e00ef85334bf2dd1b9b6d2df6c5b0bf8957
+    image: qmcgaw/gluetun:latest@sha256:0a310744740f8762c7c3a3041c1bcb0abdae832a102d211f0c6c3f16cfc8d60a
     container_name: gluetun
     ports:
       - 8989:8989 #sonarr
