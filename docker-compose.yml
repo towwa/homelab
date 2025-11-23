@@ -54,7 +54,7 @@ services:
     restart: unless-stopped
 
   qbittorrent:
-    image: lscr.io/linuxserver/qbittorrent:latest@sha256:7034f73a3c6fa4ea40fd67df462939d1665d765231b572523921c98c2db5362e
+    image: lscr.io/linuxserver/qbittorrent:latest@sha256:9752b4f8300d19e9d9157ea400d9d95547365ac0379cbf82cdff477b59b7f264
     container_name: qbittorrent
     network_mode: "service:gluetun"
     environment:
@@ -114,7 +114,7 @@ services:
     restart: unless-stopped
 
   gluetun:
-    image: qmcgaw/gluetun:latest@sha256:0a310744740f8762c7c3a3041c1bcb0abdae832a102d211f0c6c3f16cfc8d60a
+    image: qmcgaw/gluetun:latest@sha256:870a9d5880182a3902004c32d3827d0b098e30a4f74d3cc7742512e23d3888df
     container_name: gluetun
     ports:
       - 8989:8989 #sonarr
