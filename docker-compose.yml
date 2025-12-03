@@ -40,7 +40,7 @@ services:
     restart: unless-stopped
 
   bazarr:
-    image: lscr.io/linuxserver/bazarr:latest@sha256:2be164c02c0bb311b6c32e57d3d0ddc2813d524e89ab51a3408c1bf6fafecda5
+    image: lscr.io/linuxserver/bazarr:latest@sha256:ec11e988e8e13411c994a4d9f43ed9b97409aa92c1da54d9f23926c3da7c2032
     container_name: bazarr
     network_mode: "service:gluetun"
     environment:
@@ -159,7 +159,7 @@ services:
     # build:
     #   context: .
     #   dockerfile: Dockerfile
-    image: ghcr.io/dispatcharr/dispatcharr:latest@sha256:510829d3d4dba6b690e6afeb9b31da6549e3dc23950e71d2bc877608acf7cb7d
+    image: ghcr.io/dispatcharr/dispatcharr:latest@sha256:0798b03927e12ceef4a154c0dd28e044a3ca5196ecbe76c41cb45ff65d9163ce
     container_name: dispatcharr
     ports:
       - 9191:9191
