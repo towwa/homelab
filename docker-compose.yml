@@ -28,7 +28,7 @@ services:
     restart: unless-stopped
 
   prowlarr:
-    image: lscr.io/linuxserver/prowlarr:latest@sha256:475853535de3de8441b87c1457c30f2e695f4831228b12b6b7274e9da409d874
+    image: lscr.io/linuxserver/prowlarr:latest@sha256:67a8aaedcfd6989f3030b937a6a07007310b1dfc7ee8df16d2cbfa48d1c1158c
     container_name: prowlarr
     network_mode: "service:gluetun"
     environment:
@@ -138,7 +138,7 @@ services:
     restart: unless-stopped
     
   portainer:
-    image: portainer/portainer-ee:latest@sha256:dc2cfb4461ef0fdae27f150465efdd3a9adb736b9adbecc81abedf58a96fd580
+    image: portainer/portainer-ee:latest@sha256:073b63ebfc68244aae13d453317ee482964b70082d3ee6a53d87b52f93d52c2e
     container_name: portainer
     ports:
       - 9443:9443
