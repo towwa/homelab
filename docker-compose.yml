@@ -114,7 +114,7 @@ services:
     restart: unless-stopped
 
   gluetun:
-    image: qmcgaw/gluetun:latest@sha256:390e1253bf56465bb971dd7549feba15757231bd1d792699e4a54e5287014874
+    image: qmcgaw/gluetun:latest@sha256:964a4c58e1d9577627f5324152a19525eb6c1d5f1b1afdf494c46bdc47c06a9c
     container_name: gluetun
     ports:
       - 8989:8989 #sonarr
@@ -159,7 +159,7 @@ services:
     # build:
     #   context: .
     #   dockerfile: Dockerfile
-    image: ghcr.io/dispatcharr/dispatcharr:latest@sha256:8273063cfface4936862cb3bfc188ea86fea6b91edff3d6f9d929c5303e3cc65
+    image: ghcr.io/dispatcharr/dispatcharr:latest@sha256:a095aff4160ce932ada009bdb75a0d5b06d6f7da05fa385589a080fc628e4983
     container_name: dispatcharr
     ports:
       - 9191:9191
