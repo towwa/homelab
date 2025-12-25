@@ -114,7 +114,7 @@ services:
     restart: unless-stopped
 
   gluetun:
-    image: qmcgaw/gluetun:latest@sha256:9a63ae1fc329570f1e664f25b4f3761bb5a1915c6d07d9906b1614cfae2498ea
+    image: qmcgaw/gluetun:latest@sha256:9a0df7af20e305cd89756bb9787f0732135eb9ba93d436b2b1ccdd50af578224
     container_name: gluetun
     ports:
       - 8989:8989 #sonarr
