@@ -159,7 +159,7 @@ services:
     # build:
     #   context: .
     #   dockerfile: Dockerfile
-    image: ghcr.io/dispatcharr/dispatcharr:latest@sha256:a095aff4160ce932ada009bdb75a0d5b06d6f7da05fa385589a080fc628e4983
+    image: ghcr.io/dispatcharr/dispatcharr:latest@sha256:ed7dd7592b8eee5fdccb73f8458768edfd1a667f51f95c21ba02315094d6f4ff
     container_name: dispatcharr
     ports:
       - 9191:9191
