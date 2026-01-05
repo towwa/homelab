@@ -40,7 +40,7 @@ services:
     restart: unless-stopped
 
   bazarr:
-    image: lscr.io/linuxserver/bazarr:latest@sha256:001875e61839c8a50743f0bc0fa4da2a55ed8a038b9b5ed0dd2c663dd3d0bfc7
+    image: lscr.io/linuxserver/bazarr:latest@sha256:f00df1c88545a23d3d22ca10f5ae5b7ee9359db1d28756b7f8a43cec624042fd
     container_name: bazarr
     network_mode: "service:gluetun"
     environment:
@@ -54,7 +54,7 @@ services:
     restart: unless-stopped
 
   qbittorrent:
-    image: lscr.io/linuxserver/qbittorrent:latest@sha256:1497b6e047ad47b738f94739219f0e5c5b2ad7a5953b7cf0050f2fedddd8c601
+    image: lscr.io/linuxserver/qbittorrent:latest@sha256:e0cedcadd62f809efdeddfd32e4d1192f9a74e6e64ed6753bfc6e2c3ed4a714a
     container_name: qbittorrent
     network_mode: "service:gluetun"
     environment:
