@@ -40,7 +40,7 @@ services:
     restart: unless-stopped
 
   bazarr:
-    image: lscr.io/linuxserver/bazarr:latest@sha256:3785c9b813985821c9b56ee88c516d96b37dc21242c8f315f52e87c029735695
+    image: lscr.io/linuxserver/bazarr:latest@sha256:7d0a091a63889ce1e4ac4c90595ebd2c50ba5a5df7039a4f4d2be6c2aed6d4ae
     container_name: bazarr
     network_mode: "service:gluetun"
     environment:
@@ -69,7 +69,7 @@ services:
     restart: unless-stopped
 
   jellyfin:
-    image: lscr.io/linuxserver/jellyfin:latest@sha256:747bc6725c5e4f1330e693b50d787e2106e52ac5b25c4174ca5f58915fc17ec8
+    image: lscr.io/linuxserver/jellyfin:latest@sha256:313571f253bf1035809f6856bb063904456226ef3899b96e60ee4597b3477246
     container_name: jellyfin
     environment:
       - PUID=1000
@@ -159,7 +159,7 @@ services:
     # build:
     #   context: .
     #   dockerfile: Dockerfile
-    image: ghcr.io/dispatcharr/dispatcharr:latest@sha256:ed7dd7592b8eee5fdccb73f8458768edfd1a667f51f95c21ba02315094d6f4ff
+    image: ghcr.io/dispatcharr/dispatcharr:latest@sha256:023af84fb2ccb64c19a189c9ab4a5b0da148f76e8c0823a959c5250ce2d480bf
     container_name: dispatcharr
     ports:
       - 9191:9191
