@@ -32,6 +32,14 @@ http:
         - websecure
       rule: 'Host(`jellyfin.nobu.ltd`)'
       service: jellyfin
+    adguard:
+      entryPoints:
+        - web
+        - websecure
+      rule: 'Host(`adguard.nobu.ltd`)'
+      service: adguard
+      middlewares:
+        - "local-ipwhitelist@file"
 
   ## SERVICES EXAMPLE ##
   services:
@@ -51,6 +59,10 @@ http:
         serversTransport: insecureTransport
         servers:
           - url: http://192.168.0.199:8096/
+    adguard:
+      loadBalancer:
+        servers:
+          - url: http://192.168.0.5:80
 
   # allow self-signed certificates for proxied web services
   serversTransports:
