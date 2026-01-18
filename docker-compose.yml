@@ -12,6 +12,12 @@ services:
       - ${MEDIA_PATH:-}/media/arr/sonarr/tv:/tv #optional
       - ${MEDIA_PATH:-}/media/arr/qbittorrent/downloads:/downloads #optional
     restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.sonarr-rtr.entrypoints=websecure"
+      - "traefik.http.routers.sonarr-rtr.rule=Host(`sonarr.${MY_DOMAIN}`)"
+      - "traefik.http.routers.sonarr-rtr.middlewares=local-ipwhitelist@file"
+      - "traefik.http.services.sonarr-rtr.loadbalancer.server.port=8989"
 
   radarr:
     image: lscr.io/linuxserver/radarr:latest@sha256:270f25698624b57b86ca119cc95399d7ff15be8297095b4e1223fd5b549b732c
@@ -26,6 +32,12 @@ services:
       - ${MEDIA_PATH:-}/media/arr/radarr/movies:/movies #optional
       - ${MEDIA_PATH:-}/media/arr/qbittorrent/downloads:/downloads #optional
     restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.radarr-rtr.entrypoints=websecure"
+      - "traefik.http.routers.radarr-rtr.rule=Host(`radarr.${MY_DOMAIN}`)"
+      - "traefik.http.routers.radarr-rtr.middlewares=local-ipwhitelist@file"
+      - "traefik.http.services.radarr-rtr.loadbalancer.server.port=7878"
 
   prowlarr:
     image: lscr.io/linuxserver/prowlarr:latest@sha256:d3e9307b320b6772749a2cf8fc2712e9e824c4930b034680ad4d08a9e2f25884
@@ -38,6 +50,12 @@ services:
     volumes:
       - /media/arr/prowlarr/config:/config
     restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.prowlarr-rtr.entrypoints=websecure"
+      - "traefik.http.routers.prowlarr-rtr.rule=Host(`prowlarr.${MY_DOMAIN}`)"
+      - "traefik.http.routers.prowlarr-rtr.middlewares=local-ipwhitelist@file"
+      - "traefik.http.services.prowlarr-rtr.loadbalancer.server.port=9696"
 
   bazarr:
     image: lscr.io/linuxserver/bazarr:latest@sha256:7d0a091a63889ce1e4ac4c90595ebd2c50ba5a5df7039a4f4d2be6c2aed6d4ae
@@ -52,6 +70,12 @@ services:
       - ${MEDIA_PATH:-}/media/arr/radarr/movies:/movies #optional
       - ${MEDIA_PATH:-}/media/arr/sonarr/tv:/tv #optional
     restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.bazarr-rtr.entrypoints=websecure"
+      - "traefik.http.routers.bazarr-rtr.rule=Host(`bazarr.${MY_DOMAIN}`)"
+      - "traefik.http.routers.bazarr-rtr.middlewares=local-ipwhitelist@file"
+      - "traefik.http.services.bazarr-rtr.loadbalancer.server.port=6767"
 
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:latest@sha256:f430d70c70d1547fded30fbc3181c4750cef354212a5138ab754eba9ba8bd9e1
@@ -67,6 +91,12 @@ services:
       - /media/arr/qbittorrent/config:/config
       - ${MEDIA_PATH:-}/media/arr/qbittorrent/downloads:/downloads #optional
     restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.qbittorrent-rtr.entrypoints=websecure"
+      - "traefik.http.routers.qbittorrent-rtr.rule=Host(`qbittorrent.${MY_DOMAIN}`)"
+      - "traefik.http.routers.qbittorrent-rtr.middlewares=local-ipwhitelist@file"
+      - "traefik.http.services.qbittorrent-rtr.loadbalancer.server.port=8080"
 
   jellyfin:
     image: lscr.io/linuxserver/jellyfin:latest@sha256:313571f253bf1035809f6856bb063904456226ef3899b96e60ee4597b3477246
@@ -119,6 +149,12 @@ services:
     env_file:
       - .env # Optional: Only needed if contributing to a database
     restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.profilarr-rtr.entrypoints=websecure"
+      - "traefik.http.routers.profilarr-rtr.rule=Host(`profilarr.${MY_DOMAIN}`)"
+      - "traefik.http.routers.profilarr-rtr.middlewares=local-ipwhitelist@file"
+      - "traefik.http.services.profilarr-rtr.loadbalancer.server.port=6868"
 
   gluetun:
     image: qmcgaw/gluetun:latest@sha256:7b1dafa3d25cfd891deae52c7973c499f619f7d8eac52fad84f9aa1e5e6e01ca
@@ -178,6 +214,12 @@ services:
       - CELERY_BROKER_URL=redis://localhost:6379/0
       - DISPATCHARR_LOG_LEVEL=info
     restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.dispatcharr-rtr.entrypoints=websecure"
+      - "traefik.http.routers.dispatcharr-rtr.rule=Host(`dispatcharr.${MY_DOMAIN}`)"
+      - "traefik.http.routers.dispatcharr-rtr.middlewares=local-ipwhitelist@file"
+      - "traefik.http.services.dispatcharr-rtr.loadbalancer.server.port=9191"
     # Optional for hardware acceleration
     #devices:
     #  - /dev/dri:/dev/dri  # For Intel/AMD GPU acceleration (VA-API)
@@ -190,6 +232,41 @@ services:
     #              - driver: nvidia
     #                count: all
     #                capabilities: [gpu]
+
+  cloudflare-ddns:
+    image: timothyjmiller/cloudflare-ddns:latest
+    container_name: cloudflare-ddns
+    volumes:
+      - /media/arr/cloudflare-ddns/config.json:/config.json:ro
+    restart: unless-stopped
+
+  uptime-kuma:
+    image: louislam/uptime-kuma:1
+    container_name: uptime-kuma
+    volumes:
+      - /media/arr/uptime-kuma/data:/app/data
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.uptime-kuma-rtr.entrypoints=websecure"
+      - "traefik.http.routers.uptime-kuma-rtr.rule=Host(`uptime.${MY_DOMAIN}`)"
+      - "traefik.http.services.uptime-kuma-rtr.loadbalancer.server.port=3001"
+
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    container_name: homepage
+    environment:
+      - HOMEPAGE_ALLOWED_HOSTS=homepage.${MY_DOMAIN}
+      - HOMEPAGE_VAR_DOMAIN=${MY_DOMAIN}
+    volumes:
+      - /media/arr/homepage/config:/app/config
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.homepage-rtr.entrypoints=websecure"
+      - "traefik.http.routers.homepage-rtr.rule=Host(`homepage.${MY_DOMAIN}`)"
+      - "traefik.http.services.homepage-rtr.loadbalancer.server.port=3000"
   
 networks:
   default:
