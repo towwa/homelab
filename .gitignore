@@ -12,7 +12,9 @@ traefik/config/acme.json
 .lesshst
 .local/
 .npm/
+.pki/
 .profile
 .viminfo
 .vscode-server/
 .vscode/
+homepage/config/logs/

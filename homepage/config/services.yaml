@@ -1,0 +1,182 @@
+- System:
+    - Info:
+        widget:
+          type: glances
+          url: http://glances:61208
+          metric: info
+          version: 4
+    - Top Processes:
+        widget:
+          type: glances
+          url: http://glances:61208
+          metric: process
+          version: 4
+    - Network:
+        widget:
+          type: glances
+          url: http://glances:61208
+          metric: network:eth0
+          version: 4
+    - CPU:
+        widget:
+          type: glances
+          url: http://glances:61208
+          metric: cpu
+          version: 4
+
+- Infrastructure:
+    - Portainer:
+        href: https://portainer.{{HOMEPAGE_VAR_DOMAIN}}
+        siteMonitor: https://portainer.{{HOMEPAGE_VAR_DOMAIN}}
+        description: Docker management
+        icon: portainer
+        widget:
+          type: portainer
+          url: https://portainer.{{HOMEPAGE_VAR_DOMAIN}}
+          env: 3
+          key: {{HOMEPAGE_VAR_PORTAINER_KEY}}
+    - Traefik:
+        href: https://traefik.{{HOMEPAGE_VAR_DOMAIN}}
+        siteMonitor: https://traefik.{{HOMEPAGE_VAR_DOMAIN}}
+        description: Reverse proxy
+        icon: traefik
+        widget:
+          type: traefik
+          url: http://traefik:8080
+    - AdGuard Home:
+        href: https://adguard.{{HOMEPAGE_VAR_DOMAIN}}
+        siteMonitor: https://adguard.{{HOMEPAGE_VAR_DOMAIN}}
+        description: DNS & ad blocking
+        icon: adguard-home
+        widget:
+          type: adguard
+          url: https://adguard.{{HOMEPAGE_VAR_DOMAIN}}
+          username: {{HOMEPAGE_VAR_ADGUARD_USER}}
+          password: {{HOMEPAGE_VAR_ADGUARD_PASS}}
+    - Samba:
+        href: smb://192.168.0.197
+        description: File shares
+        icon: https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Logo_Samba_Software.svg/1920px-Logo_Samba_Software.svg.png?20141205004817
+        ping: 192.168.0.197
+        widget:
+          type: customapi
+          url: http://192.168.0.197:9104/metrics
+          refreshInterval: 10000
+          mappings:
+            - field: sessions
+              label: Sessions
+              format: number
+            - field: open_files
+              label: Open
+              format: number
+            - field: rx_bps
+              label: RX
+              format: bitrate
+            - field: tx_bps
+              label: TX
+              format: bitrate
+    - Proxmox:
+        href: https://pve.{{HOMEPAGE_VAR_DOMAIN}}
+        siteMonitor: https://pve.{{HOMEPAGE_VAR_DOMAIN}}
+        description: Hypervisor
+        icon: proxmox
+        widget:
+          type: proxmox
+          url: https://pve.{{HOMEPAGE_VAR_DOMAIN}}
+          username: {{HOMEPAGE_VAR_PROXMOX_USER}}
+          password: {{HOMEPAGE_VAR_PROXMOX_SECRET}}
+          node: homelab
+    - Uptime Kuma:
+        href: https://uptime.{{HOMEPAGE_VAR_DOMAIN}}
+        siteMonitor: https://uptime.{{HOMEPAGE_VAR_DOMAIN}}
+        description: Uptime monitoring
+        icon: uptime-kuma
+        widget:
+          type: uptimekuma
+          url: https://uptime.{{HOMEPAGE_VAR_DOMAIN}}
+          slug: homepage
+
+- Media:
+    - Jellyfin:
+        href: https://jellyfin.{{HOMEPAGE_VAR_DOMAIN}}
+        siteMonitor: https://jellyfin.{{HOMEPAGE_VAR_DOMAIN}}
+        description: Media server
+        icon: jellyfin
+        widget:
+          type: jellyfin
+          url: https://jellyfin.{{HOMEPAGE_VAR_DOMAIN}}
+          key: {{HOMEPAGE_VAR_JELLYFIN_KEY}}
+    - Jellyseerr:
+        href: https://jellyseerr.{{HOMEPAGE_VAR_DOMAIN}}
+        siteMonitor: https://jellyseerr.{{HOMEPAGE_VAR_DOMAIN}}
+        description: Requests
+        icon: jellyseerr
+        widget:
+          type: jellyseerr
+          url: https://jellyseerr.{{HOMEPAGE_VAR_DOMAIN}}
+          key: {{HOMEPAGE_VAR_JELLYSEERR_KEY}}
+
+- Arr Stack:
+    - Sonarr:
+        href: https://sonarr.{{HOMEPAGE_VAR_DOMAIN}}
+        siteMonitor: https://sonarr.{{HOMEPAGE_VAR_DOMAIN}}
+        description: TV shows
+        icon: sonarr
+        widget:
+          type: sonarr
+          url: https://sonarr.{{HOMEPAGE_VAR_DOMAIN}}
+          key: {{HOMEPAGE_VAR_SONARR_KEY}}
+    - Radarr:
+        href: https://radarr.{{HOMEPAGE_VAR_DOMAIN}}
+        siteMonitor: https://radarr.{{HOMEPAGE_VAR_DOMAIN}}
+        description: Movies
+        icon: radarr
+        widget:
+          type: radarr
+          url: https://radarr.{{HOMEPAGE_VAR_DOMAIN}}
+          key: {{HOMEPAGE_VAR_RADARR_KEY}}
+    - Bazarr:
+        href: https://bazarr.{{HOMEPAGE_VAR_DOMAIN}}
+        siteMonitor: https://bazarr.{{HOMEPAGE_VAR_DOMAIN}}
+        description: Subtitles
+        icon: bazarr
+        widget:
+          type: bazarr
+          url: https://bazarr.{{HOMEPAGE_VAR_DOMAIN}}
+          key: {{HOMEPAGE_VAR_BAZARR_KEY}}
+    - Prowlarr:
+        href: https://prowlarr.{{HOMEPAGE_VAR_DOMAIN}}
+        siteMonitor: https://prowlarr.{{HOMEPAGE_VAR_DOMAIN}}
+        description: Indexers
+        icon: prowlarr
+        widget:
+          type: prowlarr
+          url: https://prowlarr.{{HOMEPAGE_VAR_DOMAIN}}
+          key: {{HOMEPAGE_VAR_PROWLARR_KEY}}
+
+- Tools:
+    - qBittorrent:
+        href: https://qbittorrent.{{HOMEPAGE_VAR_DOMAIN}}
+        siteMonitor: https://qbittorrent.{{HOMEPAGE_VAR_DOMAIN}}
+        description: Torrent client
+        icon: qbittorrent
+        widget:
+          type: qbittorrent
+          url: http://gluetun:8080
+          username: {{HOMEPAGE_VAR_QBITTORRENT_USER}}
+          password: {{HOMEPAGE_VAR_QBITTORRENT_PASS}}
+    - Profilarr:
+        href: https://profilarr.{{HOMEPAGE_VAR_DOMAIN}}
+        siteMonitor: https://profilarr.{{HOMEPAGE_VAR_DOMAIN}}
+        description: Profiles
+        icon: profilarr
+    - Dispatcharr:
+        href: https://dispatcharr.{{HOMEPAGE_VAR_DOMAIN}}
+        siteMonitor: https://dispatcharr.{{HOMEPAGE_VAR_DOMAIN}}
+        description: Dispatch tools
+        icon: dispatcharr
+    - Homepage:
+        href: https://homepage.{{HOMEPAGE_VAR_DOMAIN}}
+        siteMonitor: https://homepage.{{HOMEPAGE_VAR_DOMAIN}}
+        description: Dashboard
+        icon: homepage

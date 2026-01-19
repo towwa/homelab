@@ -287,7 +287,7 @@ services:
       - HOMEPAGE_VAR_PROXMOX_USER=${HOMEPAGE_VAR_PROXMOX_USER}
       - HOMEPAGE_VAR_PROXMOX_SECRET=${HOMEPAGE_VAR_PROXMOX_SECRET}
     volumes:
-      - /media/arr/homepage/config:/app/config
+      - /root/homepage/config:/app/config
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /mnt/media:/mnt/media:ro
     restart: unless-stopped

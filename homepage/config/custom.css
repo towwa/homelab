@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Qwitcher+Grypen:wght@700&display=swap");
+
+/* Add brand text next to the logo. */
+.information-widget-logo {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.information-widget-logo .resolved {
+  margin-right: 0 !important;
+}
+
+.information-widget-logo::after {
+  content: "nobu.ltd";
+  display: inline-block;
+  white-space: nowrap;
+  font-family: "Qwitcher Grypen", cursive;
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--color-200);
+  text-shadow: 0 0 12px var(--color-200);
+}
+
+/* Put right-aligned widgets (search/weather/date) on a second row. */
+#information-widgets-right {
+  flex-basis: 100%;
+  width: 100%;
+  justify-content: flex-end;
+}

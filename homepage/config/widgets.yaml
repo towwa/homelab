@@ -1,0 +1,18 @@
+- logo:
+    icon: https://i.imgur.com/B6TfnF9.png
+- resources:
+    cpu: true
+    memory: true
+    disk:
+      - /
+      - /mnt/media
+- search:
+    provider: google
+    target: _blank
+- openmeteo:
+    units: imperial
+    cache: 5
+- datetime:
+    format:
+      dateStyle: short
+      timeStyle: short
