@@ -58,7 +58,7 @@ services:
       - "traefik.http.services.prowlarr-rtr.loadbalancer.server.port=9696"
 
   bazarr:
-    image: lscr.io/linuxserver/bazarr:latest@sha256:7d0a091a63889ce1e4ac4c90595ebd2c50ba5a5df7039a4f4d2be6c2aed6d4ae
+    image: lscr.io/linuxserver/bazarr:latest@sha256:5af962ae633e97c8e008e4b6e638798de1420e8a9e8e6189beb108a52c6e942a
     container_name: bazarr
     network_mode: "service:gluetun"
     environment:
@@ -157,7 +157,7 @@ services:
       - "traefik.http.services.profilarr-rtr.loadbalancer.server.port=6868"
 
   gluetun:
-    image: qmcgaw/gluetun:latest@sha256:7b1dafa3d25cfd891deae52c7973c499f619f7d8eac52fad84f9aa1e5e6e01ca
+    image: qmcgaw/gluetun:latest@sha256:e9bf0f82429efbf0a767ebd892e4f1639da77b807642228c6394be88c5a2fb66
     container_name: gluetun
     ports:
       - 8989:8989 #sonarr
