@@ -138,7 +138,7 @@ services:
       - 'traefik.http.services.jellyseerr-rtr.loadbalancer.server.port=5055'
   
   profilarr:
-    image: santiagosayshey/profilarr:latest@sha256:c8ad91a8e5d60b3816321b3a1f68332b29a23f910f6bd2c2d7b4a83f881f032f # or :beta
+    image: santiagosayshey/profilarr:latest@sha256:8a514f8429cd33885166facc9eb6504fa9ded056c737609e5e8ef32ae0afb350 # or :beta
     container_name: profilarr
     ports:
       - 6868:6868
