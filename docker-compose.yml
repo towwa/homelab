@@ -1,6 +1,6 @@
 services:
   sonarr:
-    image: lscr.io/linuxserver/sonarr:latest@sha256:02b4d538d351d6e35882a021c08e8600fe95d28860fb1dd724b597166e7221ca
+    image: lscr.io/linuxserver/sonarr:latest@sha256:6f73bbba33391a338e20d836a60c86beaf2a865a89b706b339fc8cb0b8ce1559
     container_name: sonarr
     network_mode: "service:gluetun"
     environment:
@@ -157,7 +157,7 @@ services:
       - "traefik.http.services.profilarr-rtr.loadbalancer.server.port=6868"
 
   gluetun:
-    image: qmcgaw/gluetun:latest@sha256:1aa28a0db802279d852b08d2358867bd75e2e319431a5da53d3cbb9a6c19fdab
+    image: qmcgaw/gluetun:latest@sha256:164fec83dc096be8b2eab7bb474880f8f563f856edda623da5500195cd05b78d
     container_name: gluetun
     ports:
       - 8989:8989 #sonarr
