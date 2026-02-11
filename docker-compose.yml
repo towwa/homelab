@@ -40,7 +40,7 @@ services:
       - "traefik.http.services.radarr-rtr.loadbalancer.server.port=7878"
 
   prowlarr:
-    image: lscr.io/linuxserver/prowlarr:latest@sha256:5339e9050cfcc0cb5331e9c98610ed9d4ce70ef481a5461ea664a13dda3f1eb0
+    image: lscr.io/linuxserver/prowlarr:latest@sha256:e74a1e093dcc223d671d4b7061e2b4946f1989a4d3059654ff4e623b731c9134
     container_name: prowlarr
     network_mode: "service:gluetun"
     environment:
@@ -157,7 +157,7 @@ services:
       - "traefik.http.services.profilarr-rtr.loadbalancer.server.port=6868"
 
   gluetun:
-    image: qmcgaw/gluetun:latest@sha256:8cbbac841ea7ceba55eee087865962b2ea0e3e337b04591551ac4e13e9cfa6bd
+    image: qmcgaw/gluetun:latest@sha256:ad2b65b131ca4faa4882c91d3672aeb72a0c480f8f33d5854f90d8b683da14e6
     container_name: gluetun
     ports:
       - 8989:8989 #sonarr
