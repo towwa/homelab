@@ -233,7 +233,7 @@ services:
     #                count: all
     #                capabilities: [gpu]
   glances:
-    image: nicolargo/glances:latest
+    image: nicolargo/glances:latest@sha256:8b443a7fbd28198f1cd0ecceb9cc0b65827c71da25c67ba8bfed0b88568c771f
     container_name: glances
     pid: host
     environment:
@@ -247,14 +247,14 @@ services:
 
 
   cloudflare-ddns:
-    image: timothyjmiller/cloudflare-ddns:latest
+    image: timothyjmiller/cloudflare-ddns:latest@sha256:2187e122660d6a2d451ef7c53fd4805c133133f4f47552256352c1e2a7f49ee2
     container_name: cloudflare-ddns
     volumes:
       - /media/arr/cloudflare-ddns/config.json:/config.json:ro
     restart: unless-stopped
 
   uptime-kuma:
-    image: louislam/uptime-kuma:1
+    image: louislam/uptime-kuma:1@sha256:3d632903e6af34139a37f18055c4f1bfd9b7205ae1138f1e5e8940ddc1d176f9
     container_name: uptime-kuma
     volumes:
       - /media/arr/uptime-kuma/data:/app/data
@@ -266,7 +266,7 @@ services:
       - "traefik.http.services.uptime-kuma-rtr.loadbalancer.server.port=3001"
 
   homepage:
-    image: ghcr.io/gethomepage/homepage:latest
+    image: ghcr.io/gethomepage/homepage:latest@sha256:0b596092c0b55fe4c65379a428a3fe90bd192f10d1b07d189a34fe5fabe7eedb
     container_name: homepage
     environment:
       - HOMEPAGE_ALLOWED_HOSTS=homepage.${MY_DOMAIN}
