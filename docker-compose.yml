@@ -58,7 +58,7 @@ services:
       - "traefik.http.services.prowlarr-rtr.loadbalancer.server.port=9696"
 
   bazarr:
-    image: lscr.io/linuxserver/bazarr:latest@sha256:1cf40186b1bc35bec87f4e4892d5d8c06086da331010be03e3459a86869c5e74
+    image: lscr.io/linuxserver/bazarr:latest@sha256:c381924dcfd79930e8f3ee75e024671185b810b0f71c984aa8712854c74c1bbb
     container_name: bazarr
     network_mode: "service:gluetun"
     environment:
@@ -99,7 +99,7 @@ services:
       - "traefik.http.services.qbittorrent-rtr.loadbalancer.server.port=8080"
 
   jellyfin:
-    image: lscr.io/linuxserver/jellyfin:latest@sha256:4ee07757abcaa0b74fbc74179392311dc2874c03b0bef04bc2d79e9e1a875793
+    image: lscr.io/linuxserver/jellyfin:latest@sha256:ba3773e77f0bf571e44cb2aad028f240cfac6b1bb261634c5762992995b50b89
     container_name: jellyfin
     environment:
       - PUID=1000
@@ -157,7 +157,7 @@ services:
       - "traefik.http.services.profilarr-rtr.loadbalancer.server.port=6868"
 
   gluetun:
-    image: qmcgaw/gluetun:latest@sha256:fbaece978bb87b883086c752075a2f2f533277bfd8a0a970ec584ba2f0cd6623
+    image: qmcgaw/gluetun:latest@sha256:784b5f1ba64f613510669a682390a97f6403b43e9ce8be0d8ffc12e534a0d89b
     container_name: gluetun
     ports:
       - 8989:8989 #sonarr
