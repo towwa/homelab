@@ -1,8 +1,21 @@
+x-vpn-service: &vpn-service
+  network_mode: "service:gluetun"
+  depends_on:
+    gluetun:
+      condition: service_healthy
+  restart: unless-stopped
+  healthcheck:
+    test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:9999/ >/dev/null 2>&1 || kill 1"]
+    interval: 30s
+    timeout: 5s
+    retries: 1
+    start_period: 20s
+
 services:
   sonarr:
     image: lscr.io/linuxserver/sonarr:latest@sha256:37be832b78548e3f55f69c45b50e3b14d18df1b6def2a4994258217e67efb1a1
     container_name: sonarr
-    network_mode: "service:gluetun"
+    restart: unless-stopped
     environment:
       - PUID=1000
       - PGID=1000
@@ -11,7 +24,6 @@ services:
       - /media/arr/sonarr/config:/config
       - ${MEDIA_PATH:-}/media/arr/sonarr/tv:/tv #optional
       - ${MEDIA_PATH:-}/media/arr/qbittorrent/downloads:/downloads #optional
-    restart: unless-stopped
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.sonarr-rtr.entrypoints=websecure"
@@ -22,7 +34,7 @@ services:
   radarr:
     image: lscr.io/linuxserver/radarr:latest@sha256:6d3e68474ea146f995af98d3fb2cb1a14e2e4457ddaf035aa5426889e2f9249c
     container_name: radarr
-    network_mode: "service:gluetun"
+    restart: unless-stopped
     environment:
       - PUID=1000
       - PGID=1000
@@ -31,7 +43,6 @@ services:
       - /media/arr/radarr/data:/config
       - ${MEDIA_PATH:-}/media/arr/radarr/movies:/movies #optional
       - ${MEDIA_PATH:-}/media/arr/qbittorrent/downloads:/downloads #optional
-    restart: unless-stopped
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.radarr-rtr.entrypoints=websecure"
@@ -42,14 +53,13 @@ services:
   prowlarr:
     image: lscr.io/linuxserver/prowlarr:latest@sha256:e74a1e093dcc223d671d4b7061e2b4946f1989a4d3059654ff4e623b731c9134
     container_name: prowlarr
-    network_mode: "service:gluetun"
+    <<: *vpn-service
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Etc/UTC
     volumes:
       - /media/arr/prowlarr/config:/config
-    restart: unless-stopped
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.prowlarr-rtr.entrypoints=websecure"
@@ -60,7 +70,7 @@ services:
   bazarr:
     image: lscr.io/linuxserver/bazarr:latest@sha256:b0bc617664dbca25845ac3b1bb6411b145b6a44a6d173071c9d2f426524fdd9f
     container_name: bazarr
-    network_mode: "service:gluetun"
+    restart: unless-stopped
     environment:
       - PUID=1000
       - PGID=1000
@@ -69,7 +79,6 @@ services:
       - /media/arr/bazarr/config:/config
       - ${MEDIA_PATH:-}/media/arr/radarr/movies:/movies #optional
       - ${MEDIA_PATH:-}/media/arr/sonarr/tv:/tv #optional
-    restart: unless-stopped
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.bazarr-rtr.entrypoints=websecure"
@@ -80,7 +89,7 @@ services:
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:latest@sha256:065792d2b11f0facff340210fc1cf13623b029a94ecdf08b02d06d922205f618
     container_name: qbittorrent
-    network_mode: "service:gluetun"
+    <<: *vpn-service
     environment:
       - PUID=1000
       - PGID=1000
@@ -90,7 +99,6 @@ services:
     volumes:
       - /media/arr/qbittorrent/config:/config
       - ${MEDIA_PATH:-}/media/arr/qbittorrent/downloads:/downloads #optional
-    restart: unless-stopped
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.qbittorrent-rtr.entrypoints=websecure"
@@ -159,11 +167,14 @@ services:
   gluetun:
     image: qmcgaw/gluetun:latest@sha256:a70a461a9c86966193f543009cfedf57e51d2f4880f0d834d7b3c0091c9250d1
     container_name: gluetun
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:9999/ >/dev/null 2>&1 || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 1
+      start_period: 20s
     ports:
-      - 8989:8989 #sonarr
-      - 7878:7878 #radarr
       - 9696:9696 #prowlarr
-      - 6767:6767 #bazarr
       - 8080:8080 #qbittorrent
       - 6881:6881 #qbittorrent
       - 6881:6881/udp #qbittorrent
