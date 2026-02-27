@@ -157,7 +157,7 @@ services:
       - "traefik.http.services.profilarr-rtr.loadbalancer.server.port=6868"
 
   gluetun:
-    image: qmcgaw/gluetun:latest@sha256:8d3c756c1fd62e2ec9683b047cdc1a3033d1f38e04f294335af7a49e0c24ab12
+    image: qmcgaw/gluetun:latest@sha256:d26d95d9158cb1cd793821bf9f0eb62c447f370925b274484a70044015e91284
     container_name: gluetun
     ports:
       - 8989:8989 #sonarr
