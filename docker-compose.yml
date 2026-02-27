@@ -58,7 +58,7 @@ services:
       - "traefik.http.services.prowlarr-rtr.loadbalancer.server.port=9696"
 
   bazarr:
-    image: lscr.io/linuxserver/bazarr:latest@sha256:c381924dcfd79930e8f3ee75e024671185b810b0f71c984aa8712854c74c1bbb
+    image: lscr.io/linuxserver/bazarr:latest@sha256:b0bc617664dbca25845ac3b1bb6411b145b6a44a6d173071c9d2f426524fdd9f
     container_name: bazarr
     network_mode: "service:gluetun"
     environment:
@@ -157,7 +157,7 @@ services:
       - "traefik.http.services.profilarr-rtr.loadbalancer.server.port=6868"
 
   gluetun:
-    image: qmcgaw/gluetun:latest@sha256:f37cecba20433246519cf939a9e28d5c79228649139e7b27684b7f95996f962a
+    image: qmcgaw/gluetun:latest@sha256:8d3c756c1fd62e2ec9683b047cdc1a3033d1f38e04f294335af7a49e0c24ab12
     container_name: gluetun
     ports:
       - 8989:8989 #sonarr
@@ -202,7 +202,7 @@ services:
     # build:
     #   context: .
     #   dockerfile: Dockerfile
-    image: ghcr.io/dispatcharr/dispatcharr:latest@sha256:8b53fbe12122e827034a6fb0a4ab9a9b8d31699587dca6d6d6394619d44dbb16
+    image: ghcr.io/dispatcharr/dispatcharr:latest@sha256:db8a9d336e2ab93aca940d18c4d91355edecc00d600adcca86d1f566ab86e6a2
     container_name: dispatcharr
     ports:
       - 9191:9191
