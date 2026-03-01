@@ -22,8 +22,7 @@ services:
       - TZ=Etc/UTC
     volumes:
       - /media/arr/sonarr/config:/config
-      - ${MEDIA_PATH:-}/media/arr/sonarr/tv:/tv #optional
-      - ${MEDIA_PATH:-}/media/arr/qbittorrent/downloads:/downloads #optional
+      - ${MEDIA_PATH:-}/media/arr:/data #optional
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.sonarr-rtr.entrypoints=websecure"
@@ -41,8 +40,7 @@ services:
       - TZ=Etc/UTC
     volumes:
       - /media/arr/radarr/data:/config
-      - ${MEDIA_PATH:-}/media/arr/radarr/movies:/movies #optional
-      - ${MEDIA_PATH:-}/media/arr/qbittorrent/downloads:/downloads #optional
+      - ${MEDIA_PATH:-}/media/arr:/data #optional
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.radarr-rtr.entrypoints=websecure"
@@ -77,8 +75,7 @@ services:
       - TZ=Etc/UTC
     volumes:
       - /media/arr/bazarr/config:/config
-      - ${MEDIA_PATH:-}/media/arr/radarr/movies:/movies #optional
-      - ${MEDIA_PATH:-}/media/arr/sonarr/tv:/tv #optional
+      - ${MEDIA_PATH:-}/media/arr:/data #optional
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.bazarr-rtr.entrypoints=websecure"
@@ -98,7 +95,7 @@ services:
       - TORRENTING_PORT=6881
     volumes:
       - /media/arr/qbittorrent/config:/config
-      - ${MEDIA_PATH:-}/media/arr/qbittorrent/downloads:/downloads #optional
+      - ${MEDIA_PATH:-}/media/arr:/data #optional
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.qbittorrent-rtr.entrypoints=websecure"
@@ -116,8 +113,7 @@ services:
       - JELLYFIN_PublishedServerUrl=http://192.168.0.198 #optional
     volumes:
       - /media/arr/jellyfin/config:/config
-      - ${MEDIA_PATH:-}/media/arr/sonarr/tv:/data/tvshows
-      - ${MEDIA_PATH:-}/media/arr/radarr/movies:/data/movies
+      - ${MEDIA_PATH:-}/media/arr:/data
     ports:
       - 8096:8096
       - 8920:8920 #optional
