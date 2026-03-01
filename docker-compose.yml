@@ -121,9 +121,10 @@ services:
       - 1900:1900/udp #optional
     restart: unless-stopped
 
-  jellyseerr:
-    image: fallenbagel/jellyseerr:latest@sha256:4538137bc5af902dece165f2bf73776d9cf4eafb6dd714670724af8f3eb77764
-    container_name: jellyseerr
+  seerr:
+    image: ghcr.io/seerr-team/seerr:v3.1.0
+    container_name: seerr
+    init: true
     environment:
       - LOG_LEVEL=debug
       - TZ=Etc/UTC
@@ -131,15 +132,15 @@ services:
     ports:
       - 5055:5055
     volumes:
-      - /media/arr/jellyseerr/config:/app/config
+      - /media/arr/seerr/config:/app/config
     restart: unless-stopped
     labels:
       - 'traefik.enable=true'
       ## HTTP Routers
-      - 'traefik.http.routers.jellyseerr-rtr.entrypoints=websecure'
-      - 'traefik.http.routers.jellyseerr-rtr.rule=Host(`jellyseerr.${MY_DOMAIN}`)'
+      - 'traefik.http.routers.seerr-rtr.entrypoints=websecure'
+      - 'traefik.http.routers.seerr-rtr.rule=Host(`seerr.${MY_DOMAIN}`)'
       ## HTTP Services
-      - 'traefik.http.services.jellyseerr-rtr.loadbalancer.server.port=5055'
+      - 'traefik.http.services.seerr-rtr.loadbalancer.server.port=5055'
   
   profilarr:
     image: santiagosayshey/profilarr:latest@sha256:8a514f8429cd33885166facc9eb6504fa9ded056c737609e5e8ef32ae0afb350 # or :beta
@@ -259,6 +260,28 @@ services:
     volumes:
       - /media/arr/cloudflare-ddns/config.json:/config.json:ro
     restart: unless-stopped
+
+  cleanuparr:
+    image: ghcr.io/cleanuparr/cleanuparr:latest
+    container_name: cleanuparr
+    environment:
+      - PORT=11011
+      - BASE_PATH=
+      - PUID=1000
+      - PGID=1000
+      - UMASK=022
+      - TZ=Etc/UTC
+    ports:
+      - 11011:11011
+    volumes:
+      - /media/arr/cleanuparr/config:/config
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.cleanuparr-rtr.entrypoints=websecure"
+      - "traefik.http.routers.cleanuparr-rtr.rule=Host(`cleanuparr.${MY_DOMAIN}`)"
+      - "traefik.http.routers.cleanuparr-rtr.middlewares=local-ipwhitelist@file"
+      - "traefik.http.services.cleanuparr-rtr.loadbalancer.server.port=11011"
 
   uptime-kuma:
     image: louislam/uptime-kuma:1
