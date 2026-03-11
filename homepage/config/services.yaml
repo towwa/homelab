@@ -115,14 +115,14 @@
               type: jellyfin
               url: https://jellyfin.{{HOMEPAGE_VAR_DOMAIN}}
               key: {{HOMEPAGE_VAR_JELLYFIN_KEY}}
-        - Jellyseerr:
-            href: https://jellyseerr.{{HOMEPAGE_VAR_DOMAIN}}
-            siteMonitor: https://jellyseerr.{{HOMEPAGE_VAR_DOMAIN}}
+        - Seerr:
+            href: https://seerr.{{HOMEPAGE_VAR_DOMAIN}}
+            siteMonitor: https://seerr.{{HOMEPAGE_VAR_DOMAIN}}
             description: Requests
-            icon: jellyseerr
+            icon: seerr
             widget:
               type: jellyseerr
-              url: https://jellyseerr.{{HOMEPAGE_VAR_DOMAIN}}
+              url: https://seerr.{{HOMEPAGE_VAR_DOMAIN}}
               key: {{HOMEPAGE_VAR_JELLYSEERR_KEY}}
         - Sonarr:
             href: https://sonarr.{{HOMEPAGE_VAR_DOMAIN}}
