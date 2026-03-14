@@ -284,7 +284,7 @@ services:
       - "traefik.http.services.cleanuparr-rtr.loadbalancer.server.port=11011"
 
   uptime-kuma:
-    image: louislam/uptime-kuma:1
+    image: louislam/uptime-kuma:2@sha256:7337368a77873f159435de9ef09567f68c31285ed5f951dec36256c4b267ee44
     container_name: uptime-kuma
     volumes:
       - /media/arr/uptime-kuma/data:/app/data
