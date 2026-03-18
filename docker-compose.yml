@@ -104,7 +104,7 @@ services:
       - "traefik.http.services.qbittorrent-rtr.loadbalancer.server.port=8080"
 
   jellyfin:
-    image: lscr.io/linuxserver/jellyfin:latest@sha256:aae645d1ff11c42b1d2d3b80694e34e0e1ea4a51879900843c8ab6e8b127a32a
+    image: lscr.io/linuxserver/jellyfin:latest@sha256:5c7691c30033c7e880c253090735c4839cc032fcd51f3a794d5689d2c5637046
     container_name: jellyfin
     environment:
       - PUID=1000
@@ -210,7 +210,7 @@ services:
     # build:
     #   context: .
     #   dockerfile: Dockerfile
-    image: ghcr.io/dispatcharr/dispatcharr:latest@sha256:116f7f4ffa512afc4d196f2f1649bb5af55a3384097632c33203dd8feb37a91b
+    image: ghcr.io/dispatcharr/dispatcharr:latest@sha256:30f89f57a36f509323f98c15ec89727e73b1313324b5b628dcf518be3cf17c36
     container_name: dispatcharr
     ports:
       - 9191:9191
