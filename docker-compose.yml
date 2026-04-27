@@ -122,7 +122,7 @@ services:
     restart: unless-stopped
 
   seerr:
-    image: ghcr.io/seerr-team/seerr:v3.1.0
+    image: ghcr.io/seerr-team/seerr:v3.1.0@sha256:b35ba0461c4a1033d117ac1e5968fd4cbe777899e4cbfbdeaf3d10a42a0eb7e9
     container_name: seerr
     init: true
     environment:
@@ -241,7 +241,7 @@ services:
     #                count: all
     #                capabilities: [gpu]
   glances:
-    image: nicolargo/glances:latest
+    image: nicolargo/glances:latest@sha256:8e138cbfa3cf1eea59633e3a173c38b0c98267db9d506bf47c2a20678c9e9f37
     container_name: glances
     pid: host
     environment:
@@ -255,14 +255,14 @@ services:
 
 
   cloudflare-ddns:
-    image: timothyjmiller/cloudflare-ddns:latest
+    image: timothyjmiller/cloudflare-ddns:latest@sha256:80454fc9123e1517414b80493d9ac543925ab75d93899f35f9ac75fdee6c65c3
     container_name: cloudflare-ddns
     volumes:
       - /media/arr/cloudflare-ddns/config.json:/config.json:ro
     restart: unless-stopped
 
   cleanuparr:
-    image: ghcr.io/cleanuparr/cleanuparr:latest
+    image: ghcr.io/cleanuparr/cleanuparr:latest@sha256:ff3f64c08f7296ab467d5baa239cec6727c0739da43b05be8eba4741c35ef2c9
     container_name: cleanuparr
     environment:
       - PORT=11011
@@ -284,7 +284,7 @@ services:
       - "traefik.http.services.cleanuparr-rtr.loadbalancer.server.port=11011"
 
   uptime-kuma:
-    image: louislam/uptime-kuma:1
+    image: louislam/uptime-kuma:1@sha256:3d632903e6af34139a37f18055c4f1bfd9b7205ae1138f1e5e8940ddc1d176f9
     container_name: uptime-kuma
     volumes:
       - /media/arr/uptime-kuma/data:/app/data
@@ -296,7 +296,7 @@ services:
       - "traefik.http.services.uptime-kuma-rtr.loadbalancer.server.port=3001"
 
   homepage:
-    image: ghcr.io/gethomepage/homepage:latest
+    image: ghcr.io/gethomepage/homepage:latest@sha256:cc84f2f5eb3c7734353701ccbaa24ed02dacb0d119114e50e4251e2005f3990a
     container_name: homepage
     environment:
       - HOMEPAGE_ALLOWED_HOSTS=homepage.${MY_DOMAIN}
