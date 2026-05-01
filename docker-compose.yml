@@ -49,7 +49,7 @@ services:
       - "traefik.http.services.radarr-rtr.loadbalancer.server.port=7878"
 
   prowlarr:
-    image: lscr.io/linuxserver/prowlarr:latest@sha256:c5de2a8758a05594319263e7691c1dce56899442ed1720d6eca216c0958f4caf
+    image: lscr.io/linuxserver/prowlarr:latest@sha256:b4204e18666179472225935b443a99cf6c66dcb7bbc2d35034427a3851f13135
     container_name: prowlarr
     <<: *vpn-service
     environment:
@@ -162,7 +162,7 @@ services:
       - "traefik.http.services.profilarr-rtr.loadbalancer.server.port=6868"
 
   gluetun:
-    image: qmcgaw/gluetun:latest@sha256:725d3e51091dde4ca43e3e3f26e2e6d3d0ccc66821e92d505c3da04958f7d472
+    image: qmcgaw/gluetun:latest@sha256:913696d82325a3dd989f112db143939f55824b148789494f18fe7991e3b705b2
     container_name: gluetun
     healthcheck:
       test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:9999/ >/dev/null 2>&1 || exit 1"]
