@@ -13,7 +13,7 @@ x-vpn-service: &vpn-service
 
 services:
   sonarr:
-    image: lscr.io/linuxserver/sonarr:latest@sha256:3580aec3802c915f0f819a88d5099abce61734b925732b8393d176b5dc561020
+    image: lscr.io/linuxserver/sonarr:latest@sha256:bed3afb5d46fde809290997760f2e19d41e57d1eb34f507c485d5a8979c7cd8d
     container_name: sonarr
     restart: unless-stopped
     environment:
@@ -162,7 +162,7 @@ services:
       - "traefik.http.services.profilarr-rtr.loadbalancer.server.port=6868"
 
   gluetun:
-    image: qmcgaw/gluetun:latest@sha256:913696d82325a3dd989f112db143939f55824b148789494f18fe7991e3b705b2
+    image: qmcgaw/gluetun:latest@sha256:d0ee595e6db2e6b5c8955df0d235ea626068a1c0319f306c3f8760489b3ef54a
     container_name: gluetun
     healthcheck:
       test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:9999/ >/dev/null 2>&1 || exit 1"]
