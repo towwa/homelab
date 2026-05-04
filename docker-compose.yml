@@ -162,7 +162,7 @@ services:
       - "traefik.http.services.profilarr-rtr.loadbalancer.server.port=6868"
 
   gluetun:
-    image: qmcgaw/gluetun:latest@sha256:bc38477325577b747de8b5667daba6947064f11a96f1b27109c2a554f686598f
+    image: qmcgaw/gluetun:latest@sha256:5ec05d70f344ebc70208ad044046e0ea677741e3afcba5ad0ec5b00a3c63a467
     container_name: gluetun
     healthcheck:
       test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:9999/ >/dev/null 2>&1 || exit 1"]
