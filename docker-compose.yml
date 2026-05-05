@@ -66,7 +66,7 @@ services:
       - "traefik.http.services.prowlarr-rtr.loadbalancer.server.port=9696"
 
   bazarr:
-    image: lscr.io/linuxserver/bazarr:latest@sha256:cb57afc3bd35558e1e7062658f9d4d18a0b4c474f10afe55f0ccfd867025f24f
+    image: lscr.io/linuxserver/bazarr:latest@sha256:7adfe3ede9ce3562098a6f944fb644da16bdf245220e707260f89f1507c87b54
     container_name: bazarr
     restart: unless-stopped
     environment:
@@ -104,7 +104,7 @@ services:
       - "traefik.http.services.qbittorrent-rtr.loadbalancer.server.port=8080"
 
   jellyfin:
-    image: lscr.io/linuxserver/jellyfin:latest@sha256:7351868a3a340049503d25da65fae19c77ce3ea58f607f702cac65b6faeec898
+    image: lscr.io/linuxserver/jellyfin:latest@sha256:0c7af94c048cd17f7438cd22c4d9c78d4c9c381d565352846aac847dd3cd74f4
     container_name: jellyfin
     environment:
       - PUID=1000
@@ -162,7 +162,7 @@ services:
       - "traefik.http.services.profilarr-rtr.loadbalancer.server.port=6868"
 
   gluetun:
-    image: qmcgaw/gluetun:latest@sha256:5ec05d70f344ebc70208ad044046e0ea677741e3afcba5ad0ec5b00a3c63a467
+    image: qmcgaw/gluetun:latest@sha256:f9cd584c6bb8c89e7e4c6d799c7547f600bc86842fd5636307543c001d929bbb
     container_name: gluetun
     healthcheck:
       test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:9999/ >/dev/null 2>&1 || exit 1"]
