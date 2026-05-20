@@ -66,7 +66,7 @@ services:
       - "traefik.http.services.prowlarr-rtr.loadbalancer.server.port=9696"
 
   bazarr:
-    image: lscr.io/linuxserver/bazarr:latest@sha256:4b7bb6d861c08bbf0c388b936ada8b2ba57669ca9974323f504e974577d19d63
+    image: lscr.io/linuxserver/bazarr:latest@sha256:95f27692c3de6dbe130cd035d342d8138ec74ade7b62cfc52e11ae222c52c855
     container_name: bazarr
     restart: unless-stopped
     environment:
@@ -162,7 +162,7 @@ services:
       - "traefik.http.services.profilarr-rtr.loadbalancer.server.port=6868"
 
   gluetun:
-    image: qmcgaw/gluetun:latest@sha256:bd84f4f090ca61170c8329a72d4f451255b01f6489486a621bfcb89749fb80ab
+    image: qmcgaw/gluetun:latest@sha256:25273bc5c8df54359bbf079c201d263ffb4140b793b1ba8c86907635ed636b13
     container_name: gluetun
     healthcheck:
       test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:9999/ >/dev/null 2>&1 || exit 1"]
