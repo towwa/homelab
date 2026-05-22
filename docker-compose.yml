@@ -104,7 +104,7 @@ services:
       - "traefik.http.services.qbittorrent-rtr.loadbalancer.server.port=8080"
 
   jellyfin:
-    image: lscr.io/linuxserver/jellyfin:latest@sha256:e622a48adf7193c7d626c2325a40f9b01c932c8e7bf3f50ffa40e7e9b6ce1d39
+    image: lscr.io/linuxserver/jellyfin:latest@sha256:155fb51c745d1a2c28c8b300612bc728a5dd06097bbc62b8b1c76d174eb20366
     container_name: jellyfin
     environment:
       - PUID=1000
@@ -162,7 +162,7 @@ services:
       - "traefik.http.services.profilarr-rtr.loadbalancer.server.port=6868"
 
   gluetun:
-    image: qmcgaw/gluetun:latest@sha256:25273bc5c8df54359bbf079c201d263ffb4140b793b1ba8c86907635ed636b13
+    image: qmcgaw/gluetun:latest@sha256:c5411925f73f0721b1d6bb2bfd89d6236dc3c66ddf38a1336e45308dc33859f9
     container_name: gluetun
     healthcheck:
       test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:9999/ >/dev/null 2>&1 || exit 1"]
@@ -210,7 +210,7 @@ services:
     # build:
     #   context: .
     #   dockerfile: Dockerfile
-    image: ghcr.io/dispatcharr/dispatcharr:latest@sha256:c9920ece0dd653c12ac251aa406351a3006043200f02054472d34c417e365190
+    image: ghcr.io/dispatcharr/dispatcharr:latest@sha256:9f6a7e596eac8b2252aa0993fa0b08132445fa840055e56110b3722071f04643
     container_name: dispatcharr
     ports:
       - 9191:9191
