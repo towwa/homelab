@@ -162,7 +162,7 @@ services:
       - "traefik.http.services.profilarr-rtr.loadbalancer.server.port=6868"
 
   gluetun:
-    image: qmcgaw/gluetun:latest@sha256:c5411925f73f0721b1d6bb2bfd89d6236dc3c66ddf38a1336e45308dc33859f9
+    image: qmcgaw/gluetun:latest@sha256:bca4ddb017c25bc37e498a1907f3165371c0eae011cb2d9ea73856ca2d806f2c
     container_name: gluetun
     healthcheck:
       test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:9999/ >/dev/null 2>&1 || exit 1"]
@@ -210,7 +210,7 @@ services:
     # build:
     #   context: .
     #   dockerfile: Dockerfile
-    image: ghcr.io/dispatcharr/dispatcharr:latest@sha256:9f6a7e596eac8b2252aa0993fa0b08132445fa840055e56110b3722071f04643
+    image: ghcr.io/dispatcharr/dispatcharr:latest@sha256:2bdcfd9dc113e743ccb3ea424e75e19b2281309b05a7d649c3717471b9f70f03
     container_name: dispatcharr
     ports:
       - 9191:9191
