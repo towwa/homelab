@@ -66,7 +66,7 @@ services:
       - "traefik.http.services.prowlarr-rtr.loadbalancer.server.port=9696"
 
   bazarr:
-    image: lscr.io/linuxserver/bazarr:latest@sha256:95f27692c3de6dbe130cd035d342d8138ec74ade7b62cfc52e11ae222c52c855
+    image: lscr.io/linuxserver/bazarr:latest@sha256:4b5e510042bf471c8bafab89cada9774fba2fb25f16ec64235151cacbe847c10
     container_name: bazarr
     restart: unless-stopped
     environment:
@@ -104,7 +104,7 @@ services:
       - "traefik.http.services.qbittorrent-rtr.loadbalancer.server.port=8080"
 
   jellyfin:
-    image: lscr.io/linuxserver/jellyfin:latest@sha256:c0ed73678fb4ca761e0d940a92e49b95352f7f241a9be79a2c575c0099288f46
+    image: lscr.io/linuxserver/jellyfin:latest@sha256:be2bd22d5e27451ebc14b326d8a6554e1f51c79f4431d6c71522565ed17f06ea
     container_name: jellyfin
     environment:
       - PUID=1000
