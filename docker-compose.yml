@@ -13,7 +13,7 @@ x-vpn-service: &vpn-service
 
 services:
   sonarr:
-    image: lscr.io/linuxserver/sonarr:latest@sha256:0b5c4803f92456fb9b65bae8375716ea120b4ea17b3cced7da32b63f0085782b
+    image: lscr.io/linuxserver/sonarr:latest@sha256:0b3f344388bd7bed4f2f770058de795e76447e4a481b83c8d5f8fed489371fde
     container_name: sonarr
     restart: unless-stopped
     environment:
@@ -104,7 +104,7 @@ services:
       - "traefik.http.services.qbittorrent-rtr.loadbalancer.server.port=8080"
 
   jellyfin:
-    image: lscr.io/linuxserver/jellyfin:latest@sha256:be2bd22d5e27451ebc14b326d8a6554e1f51c79f4431d6c71522565ed17f06ea
+    image: lscr.io/linuxserver/jellyfin:latest@sha256:c123ef2f82195e377d8ca3df275f13f9dfa5c6e61b195958662b42b5e54362ab
     container_name: jellyfin
     environment:
       - PUID=1000
