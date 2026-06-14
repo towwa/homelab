@@ -186,8 +186,7 @@ http:
     # basic auth popup
     basic-auth:
       basicAuth:
-        # https://hostingcanada.org/htpasswd-generator/
-        users: "admin:$apr1$76boeqjp$tVQUCSSQky300AS.kgbZX/" # admin:password
+        usersFile: /etc/traefik/basic-auth.users
 
 # Only use secure ciphers - https://ssl-config.mozilla.org/#server=traefik&version=2.9&config=intermediate&guideline=5.6
 tls:

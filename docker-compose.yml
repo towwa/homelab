@@ -1,3 +1,9 @@
+x-default-logging: &default-logging
+  driver: json-file
+  options:
+    max-size: "10m"
+    max-file: "3"
+
 x-vpn-service: &vpn-service
   network_mode: "service:gluetun"
   depends_on:
@@ -13,8 +19,9 @@ x-vpn-service: &vpn-service
 
 services:
   sonarr:
-    image: lscr.io/linuxserver/sonarr:latest@sha256:02bc962946fef994e67a38152446df25c10a52f8583aefeeb6467f9dd44cab99
+    image: lscr.io/linuxserver/sonarr:latest@sha256:02b4d538d351d6e35882a021c08e8600fe95d28860fb1dd724b597166e7221ca
     container_name: sonarr
+    logging: *default-logging
     restart: unless-stopped
     environment:
       - PUID=1000
@@ -31,8 +38,9 @@ services:
       - "traefik.http.services.sonarr-rtr.loadbalancer.server.port=8989"
 
   radarr:
-    image: lscr.io/linuxserver/radarr:latest@sha256:4c490ccd44d31feb49dc4cc542f2148a420fc1ae0c1ba94e59b39ba4bf112716
+    image: lscr.io/linuxserver/radarr:latest@sha256:270f25698624b57b86ca119cc95399d7ff15be8297095b4e1223fd5b549b732c
     container_name: radarr
+    logging: *default-logging
     restart: unless-stopped
     environment:
       - PUID=1000
@@ -49,8 +57,9 @@ services:
       - "traefik.http.services.radarr-rtr.loadbalancer.server.port=7878"
 
   prowlarr:
-    image: lscr.io/linuxserver/prowlarr:latest@sha256:a46d0ce0a8236bc4e065fe7c91a55d026c9d849620c5845250519b977d8857f3
+    image: lscr.io/linuxserver/prowlarr:latest@sha256:d3e9307b320b6772749a2cf8fc2712e9e824c4930b034680ad4d08a9e2f25884
     container_name: prowlarr
+    logging: *default-logging
     <<: *vpn-service
     environment:
       - PUID=1000
@@ -66,8 +75,9 @@ services:
       - "traefik.http.services.prowlarr-rtr.loadbalancer.server.port=9696"
 
   bazarr:
-    image: lscr.io/linuxserver/bazarr:latest@sha256:4b5e510042bf471c8bafab89cada9774fba2fb25f16ec64235151cacbe847c10
+    image: lscr.io/linuxserver/bazarr:latest@sha256:5af962ae633e97c8e008e4b6e638798de1420e8a9e8e6189beb108a52c6e942a
     container_name: bazarr
+    logging: *default-logging
     restart: unless-stopped
     environment:
       - PUID=1000
@@ -84,8 +94,9 @@ services:
       - "traefik.http.services.bazarr-rtr.loadbalancer.server.port=6767"
 
   qbittorrent:
-    image: lscr.io/linuxserver/qbittorrent:latest@sha256:689c81f580345135e48b5aa09b26a4d864d7af1b9a496a47db61eebe71fd480c
+    image: lscr.io/linuxserver/qbittorrent:latest@sha256:b8a08ffba8850e2e71153e153cf5eed2dedbf499ef9b123262735ce924b65586
     container_name: qbittorrent
+    logging: *default-logging
     <<: *vpn-service
     environment:
       - PUID=1000
@@ -104,8 +115,9 @@ services:
       - "traefik.http.services.qbittorrent-rtr.loadbalancer.server.port=8080"
 
   jellyfin:
-    image: lscr.io/linuxserver/jellyfin:latest@sha256:c123ef2f82195e377d8ca3df275f13f9dfa5c6e61b195958662b42b5e54362ab
+    image: lscr.io/linuxserver/jellyfin:latest@sha256:df1ccfdd214c39c9ae0595b5800591b52a6f87bbbab1bd4a53dc7be6852cf6b1
     container_name: jellyfin
+    logging: *default-logging
     environment:
       - PUID=1000
       - PGID=1000
@@ -122,15 +134,14 @@ services:
     restart: unless-stopped
 
   seerr:
-    image: ghcr.io/seerr-team/seerr:v3.1.0
+    image: ghcr.io/seerr-team/seerr:v3.1.0@sha256:b35ba0461c4a1033d117ac1e5968fd4cbe777899e4cbfbdeaf3d10a42a0eb7e9
     container_name: seerr
+    logging: *default-logging
     init: true
     environment:
-      - LOG_LEVEL=debug
+      - LOG_LEVEL=info
       - TZ=Etc/UTC
       - PORT=5055 #optional
-    ports:
-      - 5055:5055
     volumes:
       - /media/arr/seerr/config:/app/config
     restart: unless-stopped
@@ -143,10 +154,9 @@ services:
       - 'traefik.http.services.seerr-rtr.loadbalancer.server.port=5055'
   
   profilarr:
-    image: santiagosayshey/profilarr:latest@sha256:8a514f8429cd33885166facc9eb6504fa9ded056c737609e5e8ef32ae0afb350 # or :beta
+    image: santiagosayshey/profilarr:latest@sha256:c8ad91a8e5d60b3816321b3a1f68332b29a23f910f6bd2c2d7b4a83f881f032f # or :beta
     container_name: profilarr
-    ports:
-      - 6868:6868
+    logging: *default-logging
     volumes:
       - /media/arr/profilarr/config:/config # not using samba drive bc sqlite errors
     environment:
@@ -162,8 +172,9 @@ services:
       - "traefik.http.services.profilarr-rtr.loadbalancer.server.port=6868"
 
   gluetun:
-    image: qmcgaw/gluetun:latest@sha256:343ddffa6bf9be7740bdd27317df2a2ecfc7e6d12e5532f98d23f5052f15be11
+    image: qmcgaw/gluetun:latest@sha256:e3c42d634cfd781639f6b87ed3e606b67dc5d27b90fe5fb8c607d9dc7b4ed63f
     container_name: gluetun
+    logging: *default-logging
     healthcheck:
       test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:9999/ >/dev/null 2>&1 || exit 1"]
       interval: 30s
@@ -182,17 +193,16 @@ services:
     environment:
       - VPN_SERVICE_PROVIDER=nordvpn
       - VPN_TYPE=openvpn # or wireguard
-      - OPENVPN_USER=${OPENVPN_USER:-cUSTTn48rLPJSb148fsFpdMJ}
-      - OPENVPN_PASSWORD=${OPENVPN_PASSWORD:-}
+      - OPENVPN_USER=${OPENVPN_USER}
+      - OPENVPN_PASSWORD=${OPENVPN_PASSWORD}
       - SERVER_REGIONS=Washington
       - SERVER_COUNTRIES="United States"
     restart: unless-stopped
     
   portainer:
-    image: portainer/portainer-ee:latest@sha256:5eda42b43ecf9c227079469fb819700449d60f0fa6b0f10f8c895b9d9ad50c2b
+    image: portainer/portainer-ee:latest@sha256:073b63ebfc68244aae13d453317ee482964b70082d3ee6a53d87b52f93d52c2e
     container_name: portainer
-    ports:
-      - 9443:9443
+    logging: *default-logging
     volumes:
       - portainer_data:/data
       - /var/run/docker.sock:/var/run/docker.sock
@@ -202,18 +212,16 @@ services:
       - "traefik.http.routers.portainer.rule=Host(`portainer.${MY_DOMAIN}`)"
       - "traefik.http.routers.portainer.entrypoints=websecure"
       - "traefik.http.routers.portainer.tls.certresolver=lets-encr"
-      - "traefik.http.routers.portainer.middlewares=security-headers@file"
-      - "traefik.http.routers.portainer.middlewares=local-ipwhitelist@file"
+      - "traefik.http.routers.portainer.middlewares=security-headers@file,local-ipwhitelist@file"
       - "traefik.http.services.portainer.loadbalancer.server.port=9000"
       
   dispatcharr:
     # build:
     #   context: .
     #   dockerfile: Dockerfile
-    image: ghcr.io/dispatcharr/dispatcharr:latest@sha256:9275b0c1f5319a84b412af6839a1364ef25b61d8d6ff0d2130a6c2b2504a8b07
+    image: ghcr.io/dispatcharr/dispatcharr:latest@sha256:023af84fb2ccb64c19a189c9ab4a5b0da148f76e8c0823a959c5250ce2d480bf
     container_name: dispatcharr
-    ports:
-      - 9191:9191
+    logging: *default-logging
     volumes:
       - dispatcharr_data:/data
     environment:
@@ -241,8 +249,9 @@ services:
     #                count: all
     #                capabilities: [gpu]
   glances:
-    image: nicolargo/glances:latest
+    image: nicolargo/glances:latest@sha256:e22a7b4368a69bc2c3e268d80bcc7829201b72565ae068c4df352027fc998fe5
     container_name: glances
+    logging: *default-logging
     pid: host
     environment:
       - GLANCES_OPT=-w
@@ -255,15 +264,17 @@ services:
 
 
   cloudflare-ddns:
-    image: timothyjmiller/cloudflare-ddns:latest
+    image: timothyjmiller/cloudflare-ddns:latest@sha256:2187e122660d6a2d451ef7c53fd4805c133133f4f47552256352c1e2a7f49ee2
     container_name: cloudflare-ddns
+    logging: *default-logging
     volumes:
       - /media/arr/cloudflare-ddns/config.json:/config.json:ro
     restart: unless-stopped
 
   cleanuparr:
-    image: ghcr.io/cleanuparr/cleanuparr:latest
+    image: ghcr.io/cleanuparr/cleanuparr:latest@sha256:27cb25047206cab9ec2737e5d8cf840b88c5b6067c63c1bbcf2e1820129aa516
     container_name: cleanuparr
+    logging: *default-logging
     environment:
       - PORT=11011
       - BASE_PATH=
@@ -271,8 +282,6 @@ services:
       - PGID=1000
       - UMASK=022
       - TZ=Etc/UTC
-    ports:
-      - 11011:11011
     volumes:
       - /media/arr/cleanuparr/config:/config
     restart: unless-stopped
@@ -284,8 +293,9 @@ services:
       - "traefik.http.services.cleanuparr-rtr.loadbalancer.server.port=11011"
 
   uptime-kuma:
-    image: louislam/uptime-kuma:1
+    image: louislam/uptime-kuma:1@sha256:3d632903e6af34139a37f18055c4f1bfd9b7205ae1138f1e5e8940ddc1d176f9
     container_name: uptime-kuma
+    logging: *default-logging
     volumes:
       - /media/arr/uptime-kuma/data:/app/data
     restart: unless-stopped
@@ -296,8 +306,9 @@ services:
       - "traefik.http.services.uptime-kuma-rtr.loadbalancer.server.port=3001"
 
   homepage:
-    image: ghcr.io/gethomepage/homepage:latest
+    image: ghcr.io/gethomepage/homepage:latest@sha256:7dc099d5c6ec7fc945d858218565925b01ff8a60bcbfda990fc680a8b5cd0b6e
     container_name: homepage
+    logging: *default-logging
     environment:
       - HOMEPAGE_ALLOWED_HOSTS=homepage.${MY_DOMAIN}
       - HOMEPAGE_VAR_DOMAIN=${MY_DOMAIN}
@@ -328,7 +339,7 @@ services:
       - "traefik.http.routers.homepage-rtr.entrypoints=websecure"
       - "traefik.http.routers.homepage-rtr.rule=Host(`homepage.${MY_DOMAIN}`)"
       - "traefik.http.services.homepage-rtr.loadbalancer.server.port=3000"
-  
+
 networks:
   default:
     name: $DEFAULT_NETWORK
@@ -336,5 +347,6 @@ networks:
 volumes:
   portainer_data:
     name: portainer_data
+    external: true
   dispatcharr_data:
     name: dispatcharr_data

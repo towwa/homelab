@@ -1,5 +1,6 @@
 .env
 traefik/config/acme.json
+traefik/config/basic-auth.users
 .bash_history
 .bashrc
 .cache/

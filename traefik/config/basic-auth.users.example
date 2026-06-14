@@ -1,0 +1,3 @@
+# Copy this file to basic-auth.users and keep the real file untracked.
+# Format: username:hashed-password
+admin:$apr1$replace$with_a_real_htpasswd_hash

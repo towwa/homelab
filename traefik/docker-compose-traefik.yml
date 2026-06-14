@@ -1,18 +1,23 @@
+x-default-logging: &default-logging
+  driver: json-file
+  options:
+    max-size: "10m"
+    max-file: "3"
+
 services:
   traefik:
-    image: traefik:v3.7@sha256:d6858791f9e74df44ca4014166647c41cdc2abd3bf2a71b832ca4e1c6a91b257
+    image: traefik:v3.6@sha256:9004e1cd1e33c5eb0b6ec02bc6cfda61fe9caca36751114b1c9c6662f01b264a
     container_name: traefik
+    logging: *default-logging
     restart: on-failure
     ports:
       - 80:80/tcp # http
       - 443:443/tcp # https
       - 443:443/udp # https http3 quic
-      - 8081:8080 # http api dashboard
       - "25565:25565" # Minecraft server
     expose:
       - 80 # http
       - 443 # https
-      - 8081 # http api dashboard
     environment:
       - CF_API_EMAIL=${CF_API_EMAIL}
       - CF_DNS_API_TOKEN=${CF_DNS_API_TOKEN}
@@ -35,6 +40,7 @@ services:
   whoami:
     image: traefik/whoami@sha256:200689790a0a0ea48ca45992e0450bc26ccab5307375b41c84dfc4f2475937ab
     container_name: whoami
+    logging: *default-logging
     restart: unless-stopped
     labels:
       - "traefik.enable=true"

@@ -3,10 +3,10 @@ global:
   checkNewVersion: false
   sendAnonymousUsage: false
 log:
-  level: DEBUG
+  level: INFO
 api:
   dashboard: true
-  insecure: true
+  insecure: false
 serversTransport:
   insecureSkipVerify: true
 entryPoints:
