@@ -19,7 +19,7 @@ x-vpn-service: &vpn-service
 
 services:
   sonarr:
-    image: lscr.io/linuxserver/sonarr:latest@sha256:02b4d538d351d6e35882a021c08e8600fe95d28860fb1dd724b597166e7221ca
+    image: lscr.io/linuxserver/sonarr:latest@sha256:02bc962946fef994e67a38152446df25c10a52f8583aefeeb6467f9dd44cab99
     container_name: sonarr
     logging: *default-logging
     restart: unless-stopped
@@ -38,7 +38,7 @@ services:
       - "traefik.http.services.sonarr-rtr.loadbalancer.server.port=8989"
 
   radarr:
-    image: lscr.io/linuxserver/radarr:latest@sha256:270f25698624b57b86ca119cc95399d7ff15be8297095b4e1223fd5b549b732c
+    image: lscr.io/linuxserver/radarr:latest@sha256:7b45af3b660f5ff5f7d6d625bfa99960cb9265e902f1bef136486f6d2be73ee9
     container_name: radarr
     logging: *default-logging
     restart: unless-stopped
@@ -57,7 +57,7 @@ services:
       - "traefik.http.services.radarr-rtr.loadbalancer.server.port=7878"
 
   prowlarr:
-    image: lscr.io/linuxserver/prowlarr:latest@sha256:d3e9307b320b6772749a2cf8fc2712e9e824c4930b034680ad4d08a9e2f25884
+    image: lscr.io/linuxserver/prowlarr:latest@sha256:a46d0ce0a8236bc4e065fe7c91a55d026c9d849620c5845250519b977d8857f3
     container_name: prowlarr
     logging: *default-logging
     <<: *vpn-service
@@ -75,7 +75,7 @@ services:
       - "traefik.http.services.prowlarr-rtr.loadbalancer.server.port=9696"
 
   bazarr:
-    image: lscr.io/linuxserver/bazarr:latest@sha256:5af962ae633e97c8e008e4b6e638798de1420e8a9e8e6189beb108a52c6e942a
+    image: lscr.io/linuxserver/bazarr:latest@sha256:4b5e510042bf471c8bafab89cada9774fba2fb25f16ec64235151cacbe847c10
     container_name: bazarr
     logging: *default-logging
     restart: unless-stopped
@@ -94,7 +94,7 @@ services:
       - "traefik.http.services.bazarr-rtr.loadbalancer.server.port=6767"
 
   qbittorrent:
-    image: lscr.io/linuxserver/qbittorrent:latest@sha256:b8a08ffba8850e2e71153e153cf5eed2dedbf499ef9b123262735ce924b65586
+    image: lscr.io/linuxserver/qbittorrent:latest@sha256:1fc3067c4e684a4139be2e17915a63e9355ccba91c954a330d33fcb033bf7e71
     container_name: qbittorrent
     logging: *default-logging
     <<: *vpn-service
@@ -115,7 +115,7 @@ services:
       - "traefik.http.services.qbittorrent-rtr.loadbalancer.server.port=8080"
 
   jellyfin:
-    image: lscr.io/linuxserver/jellyfin:latest@sha256:df1ccfdd214c39c9ae0595b5800591b52a6f87bbbab1bd4a53dc7be6852cf6b1
+    image: lscr.io/linuxserver/jellyfin:latest@sha256:c123ef2f82195e377d8ca3df275f13f9dfa5c6e61b195958662b42b5e54362ab
     container_name: jellyfin
     logging: *default-logging
     environment:
@@ -154,7 +154,7 @@ services:
       - 'traefik.http.services.seerr-rtr.loadbalancer.server.port=5055'
   
   profilarr:
-    image: santiagosayshey/profilarr:latest@sha256:c8ad91a8e5d60b3816321b3a1f68332b29a23f910f6bd2c2d7b4a83f881f032f # or :beta
+    image: santiagosayshey/profilarr:latest@sha256:8a514f8429cd33885166facc9eb6504fa9ded056c737609e5e8ef32ae0afb350 # or :beta
     container_name: profilarr
     logging: *default-logging
     volumes:
@@ -172,7 +172,7 @@ services:
       - "traefik.http.services.profilarr-rtr.loadbalancer.server.port=6868"
 
   gluetun:
-    image: qmcgaw/gluetun:latest@sha256:e3c42d634cfd781639f6b87ed3e606b67dc5d27b90fe5fb8c607d9dc7b4ed63f
+    image: qmcgaw/gluetun:latest@sha256:0e999c910d8077458ffbd869acfd9faa2a49decbca02afec6370277854587b3e
     container_name: gluetun
     logging: *default-logging
     healthcheck:
@@ -200,7 +200,7 @@ services:
     restart: unless-stopped
     
   portainer:
-    image: portainer/portainer-ee:latest@sha256:073b63ebfc68244aae13d453317ee482964b70082d3ee6a53d87b52f93d52c2e
+    image: portainer/portainer-ee:latest@sha256:5eda42b43ecf9c227079469fb819700449d60f0fa6b0f10f8c895b9d9ad50c2b
     container_name: portainer
     logging: *default-logging
     volumes:
@@ -219,7 +219,7 @@ services:
     # build:
     #   context: .
     #   dockerfile: Dockerfile
-    image: ghcr.io/dispatcharr/dispatcharr:latest@sha256:023af84fb2ccb64c19a189c9ab4a5b0da148f76e8c0823a959c5250ce2d480bf
+    image: ghcr.io/dispatcharr/dispatcharr:latest@sha256:9275b0c1f5319a84b412af6839a1364ef25b61d8d6ff0d2130a6c2b2504a8b07
     container_name: dispatcharr
     logging: *default-logging
     volumes:
@@ -249,7 +249,7 @@ services:
     #                count: all
     #                capabilities: [gpu]
   glances:
-    image: nicolargo/glances:latest@sha256:e22a7b4368a69bc2c3e268d80bcc7829201b72565ae068c4df352027fc998fe5
+    image: nicolargo/glances:latest@sha256:5bc5b6cf2e7b992910cfd9e19799a540d8460e9356bc506c2f1af58f3bd9cb0e
     container_name: glances
     logging: *default-logging
     pid: host
@@ -264,7 +264,7 @@ services:
 
 
   cloudflare-ddns:
-    image: timothyjmiller/cloudflare-ddns:latest@sha256:2187e122660d6a2d451ef7c53fd4805c133133f4f47552256352c1e2a7f49ee2
+    image: timothyjmiller/cloudflare-ddns:latest@sha256:37c99677e997710c1bbe9d74c93f2e3b8de3457a5ca6e28643e251b38ed05311
     container_name: cloudflare-ddns
     logging: *default-logging
     volumes:
@@ -272,7 +272,7 @@ services:
     restart: unless-stopped
 
   cleanuparr:
-    image: ghcr.io/cleanuparr/cleanuparr:latest@sha256:27cb25047206cab9ec2737e5d8cf840b88c5b6067c63c1bbcf2e1820129aa516
+    image: ghcr.io/cleanuparr/cleanuparr:latest@sha256:4ad626da7e1d2774ca51bbfa812f832d5639264b3fe308909e47de02ba2188f7
     container_name: cleanuparr
     logging: *default-logging
     environment:
@@ -306,7 +306,7 @@ services:
       - "traefik.http.services.uptime-kuma-rtr.loadbalancer.server.port=3001"
 
   homepage:
-    image: ghcr.io/gethomepage/homepage:latest@sha256:7dc099d5c6ec7fc945d858218565925b01ff8a60bcbfda990fc680a8b5cd0b6e
+    image: ghcr.io/gethomepage/homepage:latest@sha256:a0b71c8e757298d02560186bab9fbe3fc2d375c523a62cc1019177b37e48aa28
     container_name: homepage
     logging: *default-logging
     environment:
