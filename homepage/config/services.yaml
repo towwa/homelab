@@ -43,7 +43,9 @@
             icon: traefik
             widget:
               type: traefik
-              url: http://traefik:8080
+              url: https://traefik.{{HOMEPAGE_VAR_DOMAIN}}
+              username: {{HOMEPAGE_VAR_TRAEFIK_USER}}
+              password: {{HOMEPAGE_VAR_TRAEFIK_PASS}}
         - AdGuard Home:
             href: https://adguard.{{HOMEPAGE_VAR_DOMAIN}}
             siteMonitor: https://adguard.{{HOMEPAGE_VAR_DOMAIN}}
