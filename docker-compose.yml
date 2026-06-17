@@ -75,7 +75,7 @@ services:
       - "traefik.http.services.prowlarr-rtr.loadbalancer.server.port=9696"
 
   bazarr:
-    image: lscr.io/linuxserver/bazarr:latest@sha256:4b5e510042bf471c8bafab89cada9774fba2fb25f16ec64235151cacbe847c10
+    image: lscr.io/linuxserver/bazarr:latest@sha256:8e48a2950e3806a2a914fe031fa21b1c0a0f2824eede4ea747e26213e941fbf2
     container_name: bazarr
     logging: *default-logging
     restart: unless-stopped
@@ -94,7 +94,7 @@ services:
       - "traefik.http.services.bazarr-rtr.loadbalancer.server.port=6767"
 
   qbittorrent:
-    image: lscr.io/linuxserver/qbittorrent:latest@sha256:1fc3067c4e684a4139be2e17915a63e9355ccba91c954a330d33fcb033bf7e71
+    image: lscr.io/linuxserver/qbittorrent:latest@sha256:bca2cf536c00900f0b8fb62ca3dcbed8ee64293165d41c8240d2cc952d4ef048
     container_name: qbittorrent
     logging: *default-logging
     <<: *vpn-service
@@ -115,7 +115,7 @@ services:
       - "traefik.http.services.qbittorrent-rtr.loadbalancer.server.port=8080"
 
   jellyfin:
-    image: lscr.io/linuxserver/jellyfin:latest@sha256:c123ef2f82195e377d8ca3df275f13f9dfa5c6e61b195958662b42b5e54362ab
+    image: lscr.io/linuxserver/jellyfin:latest@sha256:bb8ff21a879498dbdead9efe4d3de2070dbda2b9fb35b9a43501055f6e526384
     container_name: jellyfin
     logging: *default-logging
     environment:
@@ -219,7 +219,7 @@ services:
     # build:
     #   context: .
     #   dockerfile: Dockerfile
-    image: ghcr.io/dispatcharr/dispatcharr:latest@sha256:9275b0c1f5319a84b412af6839a1364ef25b61d8d6ff0d2130a6c2b2504a8b07
+    image: ghcr.io/dispatcharr/dispatcharr:latest@sha256:425129020764037869c7d1a2e74ba57ca640cb5d551ef57d869b745b6ea71c7b
     container_name: dispatcharr
     logging: *default-logging
     volumes:
