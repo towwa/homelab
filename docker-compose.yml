@@ -38,7 +38,7 @@ services:
       - "traefik.http.services.sonarr-rtr.loadbalancer.server.port=8989"
 
   radarr:
-    image: lscr.io/linuxserver/radarr:latest@sha256:7b45af3b660f5ff5f7d6d625bfa99960cb9265e902f1bef136486f6d2be73ee9
+    image: lscr.io/linuxserver/radarr:latest@sha256:1e95b5c13fe015361a9ae1c4d99fc2336816790aaea60fa74b2ffebe076a69e0
     container_name: radarr
     logging: *default-logging
     restart: unless-stopped
@@ -94,7 +94,7 @@ services:
       - "traefik.http.services.bazarr-rtr.loadbalancer.server.port=6767"
 
   qbittorrent:
-    image: lscr.io/linuxserver/qbittorrent:latest@sha256:bca2cf536c00900f0b8fb62ca3dcbed8ee64293165d41c8240d2cc952d4ef048
+    image: lscr.io/linuxserver/qbittorrent:latest@sha256:abbf2aeeb58b641977a012d0ab69939eb277cb827078450b142f782b1cd6893c
     container_name: qbittorrent
     logging: *default-logging
     <<: *vpn-service
