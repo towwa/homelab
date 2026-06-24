@@ -75,7 +75,7 @@ services:
       - "traefik.http.services.prowlarr-rtr.loadbalancer.server.port=9696"
 
   bazarr:
-    image: lscr.io/linuxserver/bazarr:latest@sha256:8e48a2950e3806a2a914fe031fa21b1c0a0f2824eede4ea747e26213e941fbf2
+    image: lscr.io/linuxserver/bazarr:latest@sha256:aaaa087af75a73b7ac765dcc5d748874cfafdb93c23ec9f64fbb481dea291b23
     container_name: bazarr
     logging: *default-logging
     restart: unless-stopped
@@ -115,7 +115,7 @@ services:
       - "traefik.http.services.qbittorrent-rtr.loadbalancer.server.port=8080"
 
   jellyfin:
-    image: lscr.io/linuxserver/jellyfin:latest@sha256:bb8ff21a879498dbdead9efe4d3de2070dbda2b9fb35b9a43501055f6e526384
+    image: lscr.io/linuxserver/jellyfin:latest@sha256:c9bb091532bec4fa12b3ce3c08d163cab2b369f5f30f1f30ca49a46d97f5eec8
     container_name: jellyfin
     logging: *default-logging
     environment:
@@ -154,7 +154,7 @@ services:
       - 'traefik.http.services.seerr-rtr.loadbalancer.server.port=5055'
   
   profilarr:
-    image: santiagosayshey/profilarr:latest@sha256:8a514f8429cd33885166facc9eb6504fa9ded056c737609e5e8ef32ae0afb350 # or :beta
+    image: santiagosayshey/profilarr:latest@sha256:8033e9c6d6995f37625afeb93d7020e99566f549ae83b65f1db7e11048952d0f # or :beta
     container_name: profilarr
     logging: *default-logging
     volumes:
