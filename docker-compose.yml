@@ -19,7 +19,7 @@ x-vpn-service: &vpn-service
 
 services:
   sonarr:
-    image: lscr.io/linuxserver/sonarr:latest@sha256:02bc962946fef994e67a38152446df25c10a52f8583aefeeb6467f9dd44cab99
+    image: lscr.io/linuxserver/sonarr:latest@sha256:916844aff737c06c12066be9146cc604c104cec66eb8e07e545cb3719a4b771a
     container_name: sonarr
     logging: *default-logging
     restart: unless-stopped
@@ -57,7 +57,7 @@ services:
       - "traefik.http.services.radarr-rtr.loadbalancer.server.port=7878"
 
   prowlarr:
-    image: lscr.io/linuxserver/prowlarr:latest@sha256:7ab5769616c1929247c8e7944453253f0b777fac2724c3bc9976ae2ff4023257
+    image: lscr.io/linuxserver/prowlarr:latest@sha256:3950b5e48cf4ba9dab78fe14038dd7f062e66b7b4ab368b02c94a13f6a3dae9f
     container_name: prowlarr
     logging: *default-logging
     <<: *vpn-service
@@ -172,7 +172,7 @@ services:
       - "traefik.http.services.profilarr-rtr.loadbalancer.server.port=6868"
 
   gluetun:
-    image: qmcgaw/gluetun:latest@sha256:0e999c910d8077458ffbd869acfd9faa2a49decbca02afec6370277854587b3e
+    image: qmcgaw/gluetun:latest@sha256:d180743987bb24da1d749a1d7f3a78026e64ba2d09d2e08cc34b0acee7f7321b
     container_name: gluetun
     logging: *default-logging
     healthcheck:
