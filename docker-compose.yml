@@ -200,7 +200,7 @@ services:
     restart: unless-stopped
     
   portainer:
-    image: portainer/portainer-ee:latest@sha256:5eda42b43ecf9c227079469fb819700449d60f0fa6b0f10f8c895b9d9ad50c2b
+    image: portainer/portainer-ee:latest@sha256:4f156214efb9260c7324bc73af37e4c57499259c25496f16341886cef3f9e268
     container_name: portainer
     logging: *default-logging
     volumes:
@@ -219,7 +219,7 @@ services:
     # build:
     #   context: .
     #   dockerfile: Dockerfile
-    image: ghcr.io/dispatcharr/dispatcharr:latest@sha256:425129020764037869c7d1a2e74ba57ca640cb5d551ef57d869b745b6ea71c7b
+    image: ghcr.io/dispatcharr/dispatcharr:latest@sha256:f5cbc82f4cfdb0f5ace2a4d09a5e115aa52cd92218fb88e79b103fe32aceb315
     container_name: dispatcharr
     logging: *default-logging
     volumes:
