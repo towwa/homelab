@@ -75,7 +75,7 @@ services:
       - "traefik.http.services.prowlarr-rtr.loadbalancer.server.port=9696"
 
   bazarr:
-    image: lscr.io/linuxserver/bazarr:latest@sha256:aaaa087af75a73b7ac765dcc5d748874cfafdb93c23ec9f64fbb481dea291b23
+    image: lscr.io/linuxserver/bazarr:latest@sha256:047222423d6d8556a88581b189175bec57f286f120b52ba29c0390fe6babaa5a
     container_name: bazarr
     logging: *default-logging
     restart: unless-stopped
@@ -115,7 +115,7 @@ services:
       - "traefik.http.services.qbittorrent-rtr.loadbalancer.server.port=8080"
 
   jellyfin:
-    image: lscr.io/linuxserver/jellyfin:latest@sha256:c9bb091532bec4fa12b3ce3c08d163cab2b369f5f30f1f30ca49a46d97f5eec8
+    image: lscr.io/linuxserver/jellyfin:latest@sha256:96d21c396f46f10578931c2941e3f2789f7087b5ab0e166afedf29e7385c6aa7
     container_name: jellyfin
     logging: *default-logging
     environment:
@@ -172,7 +172,7 @@ services:
       - "traefik.http.services.profilarr-rtr.loadbalancer.server.port=6868"
 
   gluetun:
-    image: qmcgaw/gluetun:latest@sha256:d180743987bb24da1d749a1d7f3a78026e64ba2d09d2e08cc34b0acee7f7321b
+    image: qmcgaw/gluetun:latest@sha256:b0ee2135e6ba52ad3f102aae9663707cd1c9531485117067a380d3b2b6dd991d
     container_name: gluetun
     logging: *default-logging
     healthcheck:
@@ -219,7 +219,7 @@ services:
     # build:
     #   context: .
     #   dockerfile: Dockerfile
-    image: ghcr.io/dispatcharr/dispatcharr:latest@sha256:f5cbc82f4cfdb0f5ace2a4d09a5e115aa52cd92218fb88e79b103fe32aceb315
+    image: ghcr.io/dispatcharr/dispatcharr:latest@sha256:f2b5ea3128b0513feb07efee7539ad546f3ba3a9095f19936f446f75b8baa894
     container_name: dispatcharr
     logging: *default-logging
     volumes:
