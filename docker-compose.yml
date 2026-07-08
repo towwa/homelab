@@ -94,7 +94,7 @@ services:
       - "traefik.http.services.bazarr-rtr.loadbalancer.server.port=6767"
 
   qbittorrent:
-    image: lscr.io/linuxserver/qbittorrent:latest@sha256:dd24a5f3db32bc1425d3f8dc95e8aca8ac5a35905d798171230edf33f516d9a4
+    image: lscr.io/linuxserver/qbittorrent:latest@sha256:d8488fb24969bb0954cf64a1ca1cf7a763031641ba4246734964faea6f0b807a
     container_name: qbittorrent
     logging: *default-logging
     <<: *vpn-service
@@ -115,7 +115,7 @@ services:
       - "traefik.http.services.qbittorrent-rtr.loadbalancer.server.port=8080"
 
   jellyfin:
-    image: lscr.io/linuxserver/jellyfin:latest@sha256:96d21c396f46f10578931c2941e3f2789f7087b5ab0e166afedf29e7385c6aa7
+    image: lscr.io/linuxserver/jellyfin:latest@sha256:a569ae0bfbd67ca404ae51f54cead7a2522d270179f57b3d12cf80ebff5d683b
     container_name: jellyfin
     logging: *default-logging
     environment:
@@ -272,7 +272,7 @@ services:
     restart: unless-stopped
 
   cleanuparr:
-    image: ghcr.io/cleanuparr/cleanuparr:latest@sha256:e579bc7593fb95e00aa16b2074a24f7148842857262663c9ab822d77e4d3d541
+    image: ghcr.io/cleanuparr/cleanuparr:latest@sha256:efd08729a33223a6a5bae267afcbeffe4bd2876b3f03144a025968adb8e3cc7e
     container_name: cleanuparr
     logging: *default-logging
     environment:
