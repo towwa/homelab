@@ -170,6 +170,7 @@
             widget:
               type: gluetun
               url: http://gluetun:8000
+              key: {{HOMEPAGE_VAR_GLUETUN_KEY}}
               version: 2
         - qBittorrent:
             href: https://qbittorrent.{{HOMEPAGE_VAR_DOMAIN}}
