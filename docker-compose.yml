@@ -197,6 +197,7 @@ services:
       - OPENVPN_PASSWORD=${OPENVPN_PASSWORD}
       - SERVER_REGIONS=Washington
       - SERVER_COUNTRIES="United States"
+      - OPENVPN_FLAGS=--auth-retry none # exit on AUTH_FAILED instead of endlessly retrying the same server, so gluetun picks a new one
     restart: unless-stopped
     
   portainer:

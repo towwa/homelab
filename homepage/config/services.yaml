@@ -164,6 +164,13 @@
               key: {{HOMEPAGE_VAR_PROWLARR_KEY}}
 
     - Tools:
+        - Gluetun:
+            description: VPN gateway
+            icon: gluetun
+            widget:
+              type: gluetun
+              url: http://gluetun:8000
+              version: 2
         - qBittorrent:
             href: https://qbittorrent.{{HOMEPAGE_VAR_DOMAIN}}
             siteMonitor: https://qbittorrent.{{HOMEPAGE_VAR_DOMAIN}}
