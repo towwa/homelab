@@ -6,7 +6,7 @@ x-default-logging: &default-logging
 
 services:
   traefik:
-    image: traefik:v3.7@sha256:0bd09a37d61ac1c9decaaa762dffd7b768de3ca62946861348f1eff7bb7b93aa
+    image: traefik:v3.7@sha256:4299bbed850421258fc5448c2e0e6ad350981d4d335a68de11b92448aedbefe5
     container_name: traefik
     logging: *default-logging
     restart: on-failure
