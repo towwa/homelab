@@ -57,7 +57,7 @@ services:
       - "traefik.http.services.radarr-rtr.loadbalancer.server.port=7878"
 
   prowlarr:
-    image: lscr.io/linuxserver/prowlarr:latest@sha256:4fd7a166c8f46dd3370a871c250ee577d6c2ae97a0dbe0e3614b5ef736205620
+    image: lscr.io/linuxserver/prowlarr:latest@sha256:2f3d31307beba3ba2dd226d191f5f5c14ee3b4d8b49277c64683f5ed97083179
     container_name: prowlarr
     logging: *default-logging
     <<: *vpn-service
@@ -266,7 +266,7 @@ services:
 
 
   cloudflare-ddns:
-    image: timothyjmiller/cloudflare-ddns:latest@sha256:1251198addb319e3e60234ba875bed7ea0eae99473342500e9ff5b54a9592376
+    image: timothyjmiller/cloudflare-ddns:latest@sha256:e78ef9df27d82edafbcce232681be398e6faf7c1f158b80b091b8c6a5b1b8879
     container_name: cloudflare-ddns
     logging: *default-logging
     volumes:
