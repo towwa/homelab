@@ -172,7 +172,7 @@ services:
       - "traefik.http.services.profilarr-rtr.loadbalancer.server.port=6868"
 
   gluetun:
-    image: qmcgaw/gluetun:latest@sha256:ad6b604e0cecc917a5cb6a8de55cd167ba415da8b7ec13456abb871a84be3c30
+    image: qmcgaw/gluetun:latest@sha256:e67bd4c664b103a6112a20e44384ce1cbe9394c41eb4de918693035699509956
     container_name: gluetun
     logging: *default-logging
     healthcheck:
