@@ -49,6 +49,20 @@ services:
       - "traefik.http.routers.whoami.tls.certresolver=lets-encr"
       - "traefik.http.routers.whoami.middlewares=local-ipwhitelist@file,basic-auth@file"
 
+  landing:
+    image: nginx:alpine
+    container_name: landing
+    logging: *default-logging
+    restart: unless-stopped
+    volumes:
+      - /root/www:/usr/share/nginx/html:ro
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.landing.entrypoints=websecure"
+      - "traefik.http.routers.landing.rule=Host(`${MY_DOMAIN}`)"
+      - "traefik.http.routers.landing.tls.certresolver=lets-encr"
+      - "traefik.http.services.landing.loadbalancer.server.port=80"
+
 networks:
   default:
     name: ${DEFAULT_NETWORK}
