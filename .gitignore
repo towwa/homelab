@@ -1,3 +1,6 @@
+.claude/
+.claude.json
+.claude.json.tmp.*
 .env
 traefik/config/acme.json
 traefik/config/basic-auth.users
