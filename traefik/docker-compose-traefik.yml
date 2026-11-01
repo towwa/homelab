@@ -50,7 +50,7 @@ services:
       - "traefik.http.routers.whoami.middlewares=local-ipwhitelist@file,basic-auth@file"
 
   landing:
-    image: nginx:alpine
+    image: nginx:alpine@sha256:785835ea65db4bba6f021acc0f3be91b0fef76a53fe41f8588c6698d2aed0606
     container_name: landing
     logging: *default-logging
     restart: unless-stopped
